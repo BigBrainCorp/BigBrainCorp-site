@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products | BigBrainCorp</title>
+  <meta name="description" content="Explore the current BigBrainCorp product line, starting with OSSScan." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, #0b1a3d 0%, #0d2460 60%, #0e2d7a 100%);
+      border-bottom: 2px solid #4ab3f4;
+      padding: 0 24px;
+    }
+    .site-header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 64px;
+    }
+    .site-header img.logo {
+      height: 44px;
+      width: 44px;
+      border-radius: 10px;
+      object-fit: contain;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px #4ab3f4, 0 0 10px rgba(74,179,244,.4);
+    }
+    .site-header-wordmark { display: flex; flex-direction: column; line-height: 1.1; }
+    .site-header-wordmark .brand-name { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+    .site-header-wordmark .brand-tagline { font-size: 11px; color: #4ab3f4; letter-spacing: 0.06em; text-transform: uppercase; }
+    .header-nav { margin-left: auto; display: flex; gap: 18px; align-items: center; }
+    .header-nav a { color: #a8c8ea; text-decoration: none; font-size: 13px; font-weight: 500; transition: color .15s; }
+    .header-nav a:hover { color: #fff; }
+    .header-nav .btn-nav { background: #4ab3f4; color: #0b1a3d; padding: 7px 16px; border-radius: 6px; font-weight: 700; font-size: 13px; }
+    .header-nav .btn-nav:hover { background: #6cc6f8; }
+
+    .hero {
+      background: linear-gradient(160deg, #0b1a3d 0%, #0d2460 50%, #0e2d7a 100%);
+      color: #fff;
+      padding: 64px 24px 72px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4ab3f4;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      margin: 0 0 20px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: #a8c8ea;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .page-body { flex: 1; }
+    section { padding: 60px 24px; }
+    .wrap { max-width: 800px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1056b8;
+      margin: 0 0 10px;
+    }
+    h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: #0b1a3d; margin: 0 0 16px; line-height: 1.2; }
+    h3 { font-size: 20px; font-weight: 800; color: #0b1a3d; margin: 0 0 12px; }
+    p { font-size: 16px; color: #334; line-height: 1.7; margin: 0 0 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    .callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px;
+      border: 1px solid #d0d9e8;
+      border-radius: 12px;
+      background: #f4f6f9;
+      margin-bottom: 14px;
+    }
+    .callout:last-child { margin-bottom: 0; }
+    .callout img {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      object-fit: contain;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 1px #d0d9e8;
+    }
+    .soon-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: #eef3fa;
+      color: #8a95aa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .cta-actions { margin-top: 18px; }
+    .button {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #1056b8;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .button:hover { background: #0b4a9d; }
+
+    .site-footer {
+      background: #0b1a3d;
+      border-top: 1px solid #1e3a6e;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .site-footer p { margin: 0; font-size: 12px; color: #6e8db5; line-height: 1.6; }
+    .site-footer a { color: #4ab3f4; text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <img class="logo" src="BigBrainCorpIcon.png" alt="BigBrainCorp icon" />
+      <div class="site-header-wordmark">
+        <span class="brand-name">BigBrainCorp</span>
+        <span class="brand-tagline">Deep Understanding. Elegant Simplicity. Amplified by AI.</span>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="https://ossscan.com" target="_blank" rel="noreferrer">OSSScan</a>
+        <a href="https://ossscan.com" target="_blank" rel="noreferrer" class="btn-nav">Visit OSSScan</a>
+      </nav>
+    </div>
+  </header>
+  <div class="page-body">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-eyebrow">Products</div>
+        <h1>Current Product</h1>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Current BigBrainCorp offering.</h2>
+        <div class="callout">
+          <img src="OSSScan.png" alt="OSSScan icon" />
+          <div>
+            <h3>OSSScan</h3>
+            <p>AI-assisted open-source license and security analysis.</p>
+            <p>Open source scanning should not feel like drowning in CVEs and license reports. OSSScan gives your AI coding agent the structured facts it needs to evaluate real risk. It acts as the bridge between raw dependency data and meaningful analysis, producing the SBOM, license details, and CVE context the agent relies on to do accurate investigation work. Your agent handles the evaluation. You review clear conclusions instead of noise.</p>
+            <div class="cta-actions">
+              <a class="button" href="https://ossscan.com" target="_blank" rel="noreferrer">Visit OSSScan.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="callout" style="opacity:.72;">
+          <div class="soon-badge">Soon</div>
+          <div>
+            <h3>More tools are in development</h3>
+            <p>Additional AI-driven tools are in active development and will be announced here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2026 BigBrainCorp LLC &middot; <a href="index.html">Home</a> &middot; <a href="products.html">Products</a> &middot; <a href="https://ossscan.com" target="_blank" rel="noreferrer">OSSScan</a></p>
+    </div>
+  </footer>
+</body>
+</html>

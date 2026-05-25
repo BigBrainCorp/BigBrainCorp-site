@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BigBrainCorp | Deep Understanding, Elegant Simplicity, Amplified by AI</title>
+  <meta name="description" content="Learn how BigBrainCorp thinks about company building, product design, and a growing portfolio led by OSSScan." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, #0b1a3d 0%, #0d2460 60%, #0e2d7a 100%);
+      border-bottom: 2px solid #4ab3f4;
+      padding: 0 24px;
+    }
+    .site-header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 64px;
+    }
+    .site-header img.logo {
+      height: 44px;
+      width: 44px;
+      border-radius: 10px;
+      object-fit: contain;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px #4ab3f4, 0 0 10px rgba(74,179,244,.4);
+    }
+    .site-header-wordmark { display: flex; flex-direction: column; line-height: 1.1; }
+    .site-header-wordmark .brand-name { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+    .site-header-wordmark .brand-tagline { font-size: 11px; color: #4ab3f4; letter-spacing: 0.06em; text-transform: uppercase; }
+    .header-nav { margin-left: auto; display: flex; gap: 18px; align-items: center; }
+    .header-nav a { color: #a8c8ea; text-decoration: none; font-size: 13px; font-weight: 500; transition: color .15s; }
+    .header-nav a:hover { color: #fff; }
+    .header-nav .btn-nav { background: #4ab3f4; color: #0b1a3d; padding: 7px 16px; border-radius: 6px; font-weight: 700; font-size: 13px; }
+    .header-nav .btn-nav:hover { background: #6cc6f8; }
+
+    .hero {
+      background: linear-gradient(160deg, #0b1a3d 0%, #0d2460 50%, #0e2d7a 100%);
+      color: #fff;
+      padding: 64px 24px 72px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4ab3f4;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      margin: 0 0 20px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .tagline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: clamp(15px, 2vw, 19px);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .tagline-step { color: #fff; }
+    .tagline-arrow { color: #4ab3f4; font-size: 1.2em; }
+    .tagline-step.amplified { color: #4ab3f4; }
+    .hero-sub {
+      font-size: 16px;
+      color: #a8c8ea;
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .page-body { flex: 1; }
+    section { padding: 60px 24px; }
+    .wrap { max-width: 800px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1056b8;
+      margin: 0 0 10px;
+    }
+    h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: #0b1a3d; margin: 0 0 16px; line-height: 1.2; }
+    p { font-size: 16px; color: #334; line-height: 1.7; margin: 0 0 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    .pillars { background: #f4f6f9; }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 700px) { .pillars-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .pillar {
+      background: #fff;
+      border: 1px solid #d0d9e8;
+      border-radius: 14px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .pillar:nth-child(1)::before { background: #1056b8; }
+    .pillar:nth-child(2)::before { background: #4ab3f4; }
+    .pillar:nth-child(3)::before { background: #f07c20; }
+    .pillar-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .pillar:nth-child(1) .pillar-num { color: #1056b8; }
+    .pillar:nth-child(2) .pillar-num { color: #4ab3f4; }
+    .pillar:nth-child(3) .pillar-num { color: #f07c20; }
+    .pillar h3 { font-size: 20px; font-weight: 800; color: #0b1a3d; margin: 0 0 12px; }
+    .pillar p  { font-size: 14px; color: #556; line-height: 1.6; margin: 0; }
+
+    .portfolio-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px;
+      border: 1px solid #d0d9e8;
+      border-radius: 12px;
+      background: #f4f6f9;
+      margin-bottom: 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .15s, background .15s;
+    }
+    .portfolio-item:hover { background: #edf2fb; box-shadow: 0 3px 10px rgba(11,26,61,.08); }
+    .portfolio-item img {
+      height: 48px;
+      width: 48px;
+      border-radius: 10px;
+      object-fit: contain;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 1px #d0d9e8;
+    }
+    .portfolio-item-text h3 { font-size: 16px; font-weight: 700; color: #0b1a3d; margin: 0 0 6px; }
+    .portfolio-item-text p  { font-size: 14px; color: #556; line-height: 1.55; margin: 0; }
+
+    .site-footer {
+      background: #0b1a3d;
+      border-top: 1px solid #1e3a6e;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .site-footer p { margin: 0; font-size: 12px; color: #6e8db5; line-height: 1.6; }
+    .site-footer a { color: #4ab3f4; text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <img class="logo" src="BigBrainCorpIcon.png" alt="BigBrainCorp icon" />
+      <div class="site-header-wordmark">
+        <span class="brand-name">BigBrainCorp</span>
+        <span class="brand-tagline">Deep Understanding. Elegant Simplicity. Amplified by AI.</span>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="https://ossscan.com" target="_blank" rel="noreferrer">OSSScan</a>
+        <a href="https://ossscan.com" target="_blank" rel="noreferrer" class="btn-nav">Visit OSSScan</a>
+      </nav>
+    </div>
+  </header>
+  <div class="page-body">
+    <section class="hero">
+      <div class="hero-eyebrow">About BigBrainCorp LLC</div>
+      <div style="display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:16px; flex-wrap:wrap;">
+        <img src="BigBrainCorpIcon.png" alt="BigBrainCorp" style="height:72px; width:72px; border-radius:16px; object-fit:contain; box-shadow:0 0 0 2px #4ab3f4, 0 0 16px rgba(74,179,244,.35);" />
+        <h1 style="margin:0;">BigBrainCorp</h1>
+      </div>
+      <div class="tagline">
+        <span class="tagline-step">Deep understanding</span>
+        <span class="tagline-arrow">→</span>
+        <span class="tagline-step">Elegant simplicity</span>
+        <span class="tagline-arrow">→</span>
+        <span class="tagline-step amplified">Amplified by AI</span>
+      </div>
+      <p class="hero-sub">We build software tools that take complex, time-consuming problems and make them simple, then make them even simpler by putting AI to work on your behalf.</p>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-label">Our philosophy</div>
+        <h2>Start with deep understanding.<br>Deliver elegant simplicity.</h2>
+        <p>Most software tools make hard problems visible. BigBrainCorp tools make hard problems go away. We start by understanding a domain deeply enough to know which parts are genuinely complex and which parts are only complex because no one has thought carefully about them.</p>
+        <p>Then we design for the outcome the user actually needs, not a feature list. The result is software that feels obvious in hindsight, even when the engineering underneath is anything but.</p>
+        <p>AI is not a feature we bolt on. It is the final step in the simplicity loop: once a problem is well-understood and well-structured, an AI agent can take the remaining cognitive load off the user entirely. BigBrainCorp builds the bridge between raw complexity and AI-powered clarity.</p>
+      </div>
+    </section>
+
+    <section class="pillars">
+      <div class="wrap">
+        <div class="section-label">What this means in practice</div>
+        <h2>Three steps. Every product.</h2>
+        <div class="pillars-grid">
+          <div class="pillar">
+            <div class="pillar-num">Step 1</div>
+            <h3>Deep understanding</h3>
+            <p>We spend time in the problem before we write code. That means talking to the people doing the work, reading the standards, running the tools, and finding out where the real friction is, not the stated friction.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">Step 2</div>
+            <h3>Elegant simplicity</h3>
+            <p>The hard work of deep understanding earns us the right to simplify. We remove steps, consolidate decisions, and design interfaces around what the user needs to know, not everything the system knows.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">Step 3</div>
+            <h3>Amplified by AI</h3>
+            <p>Once the problem is structured correctly, AI agents can take it further than any interface can. We wire our tools to the best AI coding agents so the user moves from reviewing data to reviewing decisions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#f4f6f9; padding:64px 24px;">
+      <div class="wrap">
+        <div class="section-label">Why we built OSSScan</div>
+        <h2>We needed this tool ourselves.<br>Nothing else did the job.</h2>
+        <p>BigBrainCorp builds products. Like any development team, we needed to understand our open source exposure: which licenses imposed obligations on our distributions, and which dependency versions carried known security vulnerabilities.</p>
+        <p>The existing tooling landscape was not what we needed. Enterprise scanners are expensive. Free tools produce long, undifferentiated lists of potential issues that translate into weeks or months of developer time just to investigate; most of which turns out to be noise.</p>
+        <p>We wanted something inexpensive, fast, and genuinely useful. In a world where AI coding agents can reason across a codebase, that seemed achievable. Our first instinct was simple: just ask the AI agent to analyze the project and report any license or CVE risk.</p>
+        <p>What we discovered is that a bridge application was needed first. Before an AI agent can investigate, it needs structured facts: the full SBOM, the licenses actually in use, and the CVEs reported against the specific package versions in the project. Without that grounding, the agent is guessing. With it, the agent can focus on what it does best, reasoning about whether each reported issue is exploitable or obligating in the context of how the code actually uses the package.</p>
+        <p>That distinction is what OSSScan exists to solve. OSSScan creates the "Possibilities report": the complete, enriched picture of what is present. It then builds the investigation prompts and supporting files that let your AI coding agent turn that list of possibilities into a focused Evaluation report, screening out false positives and surfacing the small set of issues that actually need attention. Work that previously took weeks can be completed in minutes to hours.</p>
+        <p>Once the AI agent delivers its findings, we interact with it to evaluate solutions: upgrading a package version, replacing a dependency, or changing the code. The agent does the work. We review and approve.</p>
+        <p>AI coding agents will eventually develop the ability to generate SBOMs, resolve licenses in use, and scan for CVEs in real time without a bridge application. Until that day, OSSScan is how you get those results today.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 BigBrainCorp LLC &nbsp;&middot;&nbsp;
+      <a href="index.html">bigbraincorp.com</a>
+    </p>
+    <p style="margin-top:6px;">
+      OSSScan &nbsp;&middot;&nbsp;
+      <a href="mailto:jim@ossscan.com">jim@ossscan.com</a> &nbsp;&middot;&nbsp;
+      <a href="https://ossscan.com" target="_blank" rel="noreferrer">ossscan.com</a>
+    </p>
+  </footer>
+</body>
+</html>

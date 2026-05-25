@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About BigBrainCorp</title>
+  <meta name="description" content="About BigBrainCorp, its founder, and the company story." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, #0b1a3d 0%, #0d2460 60%, #0e2d7a 100%);
+      border-bottom: 2px solid #4ab3f4;
+      padding: 0 24px;
+    }
+    .site-header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 64px;
+    }
+    .site-header img.logo {
+      height: 44px;
+      width: 44px;
+      border-radius: 10px;
+      object-fit: contain;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px #4ab3f4, 0 0 10px rgba(74,179,244,.4);
+    }
+    .site-header-wordmark { display: flex; flex-direction: column; line-height: 1.1; }
+    .site-header-wordmark .brand-name { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+    .site-header-wordmark .brand-tagline { font-size: 11px; color: #4ab3f4; letter-spacing: 0.06em; text-transform: uppercase; }
+    .header-nav { margin-left: auto; display: flex; gap: 18px; align-items: center; }
+    .header-nav a { color: #a8c8ea; text-decoration: none; font-size: 13px; font-weight: 500; transition: color .15s; }
+    .header-nav a:hover { color: #fff; }
+    .header-nav .btn-nav { background: #4ab3f4; color: #0b1a3d; padding: 7px 16px; border-radius: 6px; font-weight: 700; font-size: 13px; }
+    .header-nav .btn-nav:hover { background: #6cc6f8; }
+
+    .hero {
+      background: linear-gradient(160deg, #0b1a3d 0%, #0d2460 50%, #0e2d7a 100%);
+      color: #fff;
+      padding: 64px 24px 72px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4ab3f4;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      margin: 0 0 20px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: #a8c8ea;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .page-body { flex: 1; }
+    section { padding: 60px 24px; }
+    .wrap { max-width: 800px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1056b8;
+      margin: 0 0 10px;
+    }
+    h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: #0b1a3d; margin: 0 0 16px; line-height: 1.2; }
+    p { font-size: 16px; color: #334; line-height: 1.7; margin: 0 0 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    .callout {
+      padding: 24px;
+      border: 1px solid #d0d9e8;
+      border-radius: 12px;
+      background: #f4f6f9;
+    }
+
+    .site-footer {
+      background: #0b1a3d;
+      border-top: 1px solid #1e3a6e;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .site-footer p { margin: 0; font-size: 12px; color: #6e8db5; line-height: 1.6; }
+    .site-footer a { color: #4ab3f4; text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <img class="logo" src="BigBrainCorpIcon.png" alt="BigBrainCorp icon" />
+      <div class="site-header-wordmark">
+        <span class="brand-name">BigBrainCorp</span>
+        <span class="brand-tagline">Deep Understanding. Elegant Simplicity. Amplified by AI.</span>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="https://ossscan.com" target="_blank" rel="noreferrer">OSSScan</a>
+        <a href="https://ossscan.com" target="_blank" rel="noreferrer" class="btn-nav">Visit OSSScan</a>
+      </nav>
+    </div>
+  </header>
+  <div class="page-body">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-eyebrow">About</div>
+        <h1>About BigBrainCorp</h1>
+        <p class="hero-sub">BigBrainCorp was created to help people work with greater clarity and efficiency by combining deep domain experience with practical, human-centered AI. Many tasks in modern technical and business workflows are repetitive, noisy, and difficult to scale, yet still require human judgment at key moments. BigBrainCorp builds tools that use AI where it is effective, avoid AI where it is not, and always keep the user in control of important decisions.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <p>The company is led by James Rodrigues, who spent twenty five years at Microsoft building productivity tools, improving engineering workflows, and driving product quality across large and complex organizations. After leaving Microsoft, he spent eight years evaluating technology companies during technical due diligence. Across hundreds of reviews, he saw the same pattern. Most companies rely heavily on open source software, but very few proactively govern how they use it.</p>
+        <p>His work has spanned developer tooling, large-scale product quality systems, and deep technical evaluations of hundreds of software companies.</p>
+        <p>Open source is powerful, but it carries two major categories of risk that are often underestimated.</p>
+        <p>There is IP risk from copyleft licensing obligations.</p>
+        <p>There is security risk from vulnerabilities buried inside dependency trees.</p>
+        <p>Many teams try to protect themselves with code reviews and manual checks, but this often creates a false sense of safety. Some packages appear permissively licensed on the surface yet contain copyleft licensed transitive dependencies that only show up through deep analysis. BigBrainCorp experienced this directly while building OSSScan. The full story is documented in the <a href="https://ossscan.com/index.html#built-from-experience" target="_blank" rel="noreferrer">Built From Experience section on the OSSScan site</a>, and it demonstrates why surface level reviews are not enough.</p>
+        <p>James also saw how much time engineering teams lose to noisy CVE reports. Many vulnerabilities are not exploitable in the context of how a product actually uses a component, yet developers spend weeks sorting through the noise. At the same time, James was actively evaluating AI solutions and saw how AI coding agents can reason across a codebase when they are given the structured facts they need.</p>
+        <p><strong>The result is a clear and practical philosophy for how modern tools should work.</strong></p>
+        <p>This insight shaped the philosophy behind BigBrainCorp.</p>
+        <p>Tools should be designed with an AI centric approach.</p>
+        <p>They should prepare the information an AI agent needs.</p>
+        <p>They should allow the agent to do the heavy analysis.</p>
+        <p>They should keep the human in control of the final decisions.</p>
+        <p>This approach delivers maximum return on a user's time without sacrificing quality.</p>
+        <p>OSSScan is the first tool built with this philosophy. It acts as a bridge between raw dependency data and meaningful analysis. It prepares the complete SBOM, resolves real licenses in use, enriches CVE data, and produces the investigation facts an AI agent needs to evaluate actual risk. The AI handles the evaluation. The developer reviews clear conclusions instead of noise.</p>
+        <p>BigBrainCorp will continue building tools that follow this model. Each one will combine deep understanding with elegant simplicity and will amplify productivity across technical and business workflows through thoughtful use of AI.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2026 BigBrainCorp LLC &middot; <a href="index.html">Home</a> &middot; <a href="products.html">Products</a> &middot; <a href="https://ossscan.com" target="_blank" rel="noreferrer">OSSScan</a></p>
+    </div>
+  </footer>
+</body>
+</html>
