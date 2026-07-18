@@ -148,6 +148,31 @@
     .site-footer p { margin: 0; font-size: 12px; color: #6e8db5; line-height: 1.6; }
     .site-footer a { color: #4ab3f4; text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
+
+    /* ── Mobile ──
+       The header packs the logo, tagline, and full nav into one fixed-height,
+       non-wrapping row. On a phone that overflows the viewport and scrolls
+       sideways. Unlike OSSScan (which repeats its links in a secondary nav),
+       this header is the site's only navigation, so the links must wrap onto
+       their own row rather than be hidden. Must stay last to win on source order. */
+    @media (max-width: 640px) {
+      .site-header { padding: 0 16px; }
+      .site-header-inner { height: auto; flex-wrap: wrap; padding: 12px 0; gap: 12px; }
+      .site-header-wordmark .brand-tagline { display: none; }
+      .header-nav { margin-left: 0; width: 100%; flex-wrap: wrap; gap: 12px 18px; }
+      section { padding: 44px 20px; }
+      .hero { padding: 48px 20px 56px; }
+      .callout { flex-wrap: wrap; }
+    }
+
+    /* Very narrow: original iPhone SE and phones with Display Zoom enabled
+       (a 390pt device rendered at a 320px CSS viewport). Inert at 375px and up. */
+    @media (max-width: 374px) {
+      .site-header { padding: 0 12px; }
+      .header-nav { gap: 10px 14px; }
+      .header-nav a:not(.btn-nav) { font-size: 12px; }
+      p a, li a { overflow-wrap: anywhere; }
+    }
   </style>
 </head>
 <body>
