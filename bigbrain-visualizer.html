@@ -387,6 +387,12 @@
         <div class="section-label">Download</div>
         <h2>Free to download. The demos run with no sign-in.</h2>
         <p>Pick the build for your Mac. Apple silicon is any Mac with an M series chip; Intel is any Mac from before. Unzip the file and drag the app to Applications. Each build is signed and notarized, and the app updates itself from then on.</p>
+        <form id="beta-code" hidden style="margin:0 0 16px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <label for="beta-code-input" style="font-weight:600;">Beta code</label>
+          <input id="beta-code-input" type="text" autocomplete="off" spellcheck="false" style="padding:8px 10px; min-width:220px; border-radius:8px; border:1px solid #4ab3f4; background:transparent; color:inherit;" />
+          <button type="submit" class="button">Show the downloads</button>
+          <p id="beta-code-note" class="note" style="flex-basis:100%; margin:0;"></p>
+        </form>
         <div class="downloads" id="downloads">
           <div class="download" data-arch="arm64">
             <p class="download-tag" data-role="tag"></p>
@@ -458,10 +464,14 @@
   </footer>
 
   <script>
-  // The license service that serves the downloads. It does not exist yet:
+  // The license service that lists the downloads. It does not exist yet:
   // replace this one value with the service's base address when it is deployed.
-  // The page calls GET /downloads for the version line under each button, and
-  // the buttons point at GET /downloads/arm64 and GET /downloads/x86_64.
+  // The page calls GET /downloads, which gives each build's public address,
+  // size, SHA-256 and release date; the buttons point at those addresses once
+  // it answers, and at GET /downloads/arm64 and /downloads/x86_64 until then.
+  // While the beta runs, GET /downloads asks for the beta code (403
+  // beta_code_needed); the page then shows a code box and sends the code in
+  // the X-Beta-Code header.
   const LICENSE_SERVICE_BASE_URL = 'https://PLACEHOLDER-license-service.invalid';
 
   const MANIFEST_URL = `${LICENSE_SERVICE_BASE_URL}/downloads`;
@@ -517,8 +527,7 @@
   }
 
   // GET /downloads answers with the current version and, for each architecture,
-  // the download address, size and release date. The exact field names are
-  // settled when the service is built; this reads the likely spellings.
+  // the public address, size, SHA-256 and release date.
   function describe(manifest, arch) {
     const perArch = (manifest.downloads && manifest.downloads[arch]) || manifest[arch] || {};
     const version = perArch.version || manifest.version || '';
@@ -528,13 +537,39 @@
     if (version) parts.push(`Version ${version}`);
     if (size) parts.push(size);
     if (date) parts.push(`released ${date}`);
-    return parts.join(', ');
+    if (perArch.sha256) parts.push(`SHA-256 ${perArch.sha256}`);
+    return { line: parts.join(', '), url: perArch.url || '' };
   }
 
-  async function fillVersions() {
+  // The beta code box: shown when the listing asks for a code, hidden otherwise.
+  const betaBox = document.getElementById('beta-code');
+  const betaInput = document.getElementById('beta-code-input');
+  const betaNote = document.getElementById('beta-code-note');
+  function showBetaBox(message) {
+    if (!betaBox) return;
+    betaBox.hidden = false;
+    for (const card of document.querySelectorAll('.download[data-arch]')) card.querySelector('[data-role="link"]').hidden = true;
+    if (betaNote) betaNote.textContent = message || '';
+  }
+  function hideBetaBox() {
+    if (betaBox) betaBox.hidden = true;
+    for (const card of document.querySelectorAll('.download[data-arch]')) card.querySelector('[data-role="link"]').hidden = false;
+  }
+
+  async function fillVersions(betaCode) {
     let manifest;
     try {
-      const resp = await fetch(MANIFEST_URL, { headers: { 'Accept': 'application/json' } });
+      const headers = { 'Accept': 'application/json' };
+      if (betaCode) headers['X-Beta-Code'] = betaCode;
+      const resp = await fetch(MANIFEST_URL, { headers });
+      if (resp.status === 403) {
+        let body = {};
+        try { body = await resp.json(); } catch (err) { /* no body */ }
+        if (body.error === 'beta_code_needed' || body.error === 'beta_code_wrong') {
+          showBetaBox(betaCode ? (body.reason || 'That code is not right.') : 'BigBrain is in a closed beta. Enter the code you were given to download it.');
+          return;
+        }
+      }
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       manifest = await resp.json();
     } catch (err) {
@@ -542,11 +577,21 @@
       // version lines stay empty.
       return;
     }
+    hideBetaBox();
     for (const arch of ARCHITECTURES) {
       const card = document.querySelector(`.download[data-arch="${arch}"]`);
       if (!card) continue;
-      card.querySelector('[data-role="version"]').textContent = describe(manifest, arch);
+      const d = describe(manifest, arch);
+      card.querySelector('[data-role="version"]').textContent = d.line;
+      if (d.url) card.querySelector('[data-role="link"]').href = d.url;
     }
+  }
+
+  if (betaBox) {
+    betaBox.addEventListener('submit', (event) => {
+      event.preventDefault();
+      fillVersions((betaInput && betaInput.value || '').trim());
+    });
   }
 
   detectArchitecture().then(arch => { if (arch) offerFirst(arch); });
