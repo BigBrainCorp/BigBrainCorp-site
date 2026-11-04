@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BigBrain Visualizer | BigBrainCorp</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="description" content="BigBrain Visualizer is a Mac app that shows a software system as a map a non-programmer can walk, built and kept current by your own coding agent. Free demos and viewers; a subscription for systems of your own." />
+  <link rel="canonical" href="https://bigbraincorp.com/bigbrain-visualizer.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BigBrain Visualizer | BigBrainCorp" />
+  <meta property="og:description" content="BigBrain Visualizer is a Mac app that shows a software system as a map a non-programmer can walk, built and kept current by your own coding agent. Free demos and viewers; a subscription for systems of your own." />
+  <meta property="og:url" content="https://bigbraincorp.com/bigbrain-visualizer.html" />
+  <meta property="og:image" content="https://bigbraincorp.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="BigBrainCorp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BigBrain Visualizer | BigBrainCorp" />
+  <meta name="twitter:description" content="BigBrain Visualizer is a Mac app that shows a software system as a map a non-programmer can walk, built and kept current by your own coding agent. Free demos and viewers; a subscription for systems of your own." />
+  <meta name="twitter:image" content="https://bigbraincorp.com/og-image.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, #0b1a3d 0%, #0d2460 60%, #0e2d7a 100%);
+      border-bottom: 2px solid #4ab3f4;
+      padding: 0 24px;
+    }
+    .site-header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 64px;
+    }
+    .site-header img.logo {
+      height: 44px;
+      width: 44px;
+      border-radius: 10px;
+      object-fit: contain;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px #4ab3f4, 0 0 10px rgba(74,179,244,.4);
+    }
+    .site-header-wordmark { display: flex; flex-direction: column; line-height: 1.1; }
+    .site-header-wordmark .brand-name { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+    .site-header-wordmark .brand-tagline { font-size: 11px; color: #4ab3f4; letter-spacing: 0.06em; text-transform: uppercase; }
+    .header-nav { margin-left: auto; display: flex; gap: 18px; align-items: center; }
+    .header-nav a { color: #a8c8ea; text-decoration: none; font-size: 13px; font-weight: 500; transition: color .15s; }
+    .header-nav a:hover { color: #fff; }
+    .header-nav .btn-nav { background: #4ab3f4; color: #0b1a3d; padding: 7px 16px; border-radius: 6px; font-weight: 700; font-size: 13px; }
+    .header-nav .btn-nav:hover { background: #6cc6f8; }
+
+    .hero {
+      background: linear-gradient(160deg, #0b1a3d 0%, #0d2460 50%, #0e2d7a 100%);
+      color: #fff;
+      padding: 64px 24px 72px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4ab3f4;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      margin: 0 0 20px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: #a8c8ea;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+    .hero-actions { margin-top: 28px; }
+    .hero-actions a {
+      display: inline-block;
+      background: #4ab3f4;
+      color: #0b1a3d;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .hero-actions a:hover { background: #6cc6f8; }
+
+    .page-body { flex: 1; }
+    section { padding: 60px 24px; }
+    section.alt { background: #f4f6f9; }
+    .wrap { max-width: 800px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1056b8;
+      margin: 0 0 10px;
+    }
+    h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: #0b1a3d; margin: 0 0 16px; line-height: 1.2; }
+    h3 { font-size: 20px; font-weight: 800; color: #0b1a3d; margin: 0 0 12px; }
+    p { font-size: 16px; color: #334; line-height: 1.7; margin: 0 0 16px; }
+    p:last-child { margin-bottom: 0; }
+    ul { margin: 0 0 16px; padding-left: 22px; }
+    li { font-size: 16px; color: #334; line-height: 1.7; margin-bottom: 6px; }
+    a { color: #1056b8; }
+
+    .button {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #1056b8;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .button:hover { background: #0b4a9d; }
+
+    /* Free and paid, side by side */
+    .sides {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 700px) { .sides { grid-template-columns: 1fr 1fr; } }
+    .side {
+      background: #fff;
+      border: 1px solid #d0d9e8;
+      border-radius: 14px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .side::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .side.free::before { background: #4ab3f4; }
+    .side.paid::before { background: #1056b8; }
+    .side-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .side.free .side-num { color: #4ab3f4; }
+    .side.paid .side-num { color: #1056b8; }
+    .side h3 { font-size: 20px; margin: 0 0 12px; }
+    .side p, .side li { font-size: 14px; color: #556; line-height: 1.6; }
+    .side ul { padding-left: 18px; margin: 0; }
+    .side li { margin-bottom: 8px; }
+    .side li:last-child { margin-bottom: 0; }
+
+    /* Prices */
+    .plans {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    @media (min-width: 700px) { .plans { grid-template-columns: 1fr 1fr; } }
+    .plan {
+      border: 1px solid #d0d9e8;
+      border-radius: 12px;
+      background: #f4f6f9;
+      padding: 22px 24px;
+    }
+    .plan h3 { font-size: 16px; margin: 0 0 6px; }
+    .plan .price { font-size: 26px; font-weight: 800; color: #0b1a3d; margin: 0 0 4px; line-height: 1.2; }
+    .plan .price small { font-size: 14px; font-weight: 600; color: #556; }
+    .plan p { font-size: 14px; color: #556; line-height: 1.55; margin: 0; }
+
+    /* Downloads */
+    .downloads {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin: 8px 0 20px;
+    }
+    @media (min-width: 600px) { .downloads { grid-template-columns: 1fr 1fr; } }
+    .download {
+      border: 1px solid #d0d9e8;
+      border-radius: 12px;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(11,26,61,.07);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .download.recommended { border-color: #1056b8; box-shadow: 0 0 0 1px #1056b8, 0 2px 8px rgba(11,26,61,.07); }
+    .download-title { font-size: 15px; font-weight: 700; color: #0b1a3d; margin: 0; }
+    .download-for { font-size: 12px; color: #667; margin: 0; }
+    .download-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #1056b8;
+      margin: 0;
+    }
+    .download-tag:empty { display: none; }
+    .download .button { align-self: flex-start; }
+    .download-version { font-size: 13px; color: #667; margin: 0; min-height: 1.5em; }
+    .note { font-size: 14px; color: #556; }
+
+    /* Viewers and links */
+    .rows { border: 1px solid #d0d9e8; border-radius: 12px; overflow: hidden; margin-top: 8px; }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      background: #fff;
+      border-top: 1px solid #d0d9e8;
+    }
+    .row:first-child { border-top: none; }
+    .row p { margin: 0; font-size: 15px; }
+    .row p small { display: block; font-size: 13px; color: #667; margin-top: 2px; }
+    .placeholder {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #8a95aa;
+      background: #eef3fa;
+      border-radius: 6px;
+      padding: 6px 10px;
+      white-space: nowrap;
+    }
+
+    .site-footer {
+      background: #0b1a3d;
+      border-top: 1px solid #1e3a6e;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .site-footer p { margin: 0; font-size: 12px; color: #6e8db5; line-height: 1.6; }
+    .site-footer a { color: #4ab3f4; text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* ── Mobile ──
+       The header packs the logo, tagline, and full nav into one fixed-height,
+       non-wrapping row. On a phone that overflows the viewport and scrolls
+       sideways. Unlike OSSScan (which repeats its links in a secondary nav),
+       this header is the site's only navigation, so the links must wrap onto
+       their own row rather than be hidden. Must stay last to win on source order. */
+    @media (max-width: 640px) {
+      .site-header { padding: 0 16px; }
+      .site-header-inner { height: auto; flex-wrap: wrap; padding: 12px 0; gap: 12px; }
+      .site-header-wordmark .brand-tagline { display: none; }
+      .header-nav { margin-left: 0; width: 100%; flex-wrap: wrap; gap: 12px 18px; }
+      section { padding: 44px 20px; }
+      .hero { padding: 48px 20px 56px; }
+      .row { flex-wrap: wrap; }
+    }
+
+    /* Very narrow: original iPhone SE and phones with Display Zoom enabled
+       (a 390pt device rendered at a 320px CSS viewport). Inert at 375px and up. */
+    @media (max-width: 374px) {
+      .site-header { padding: 0 12px; }
+      .header-nav { gap: 10px 14px; }
+      .header-nav a:not(.btn-nav) { font-size: 12px; }
+      p a, li a { overflow-wrap: anywhere; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <img class="logo" src="BigBrainCorpIcon.png" alt="BigBrainCorp icon" />
+      <div class="site-header-wordmark">
+        <span class="brand-name">BigBrainCorp</span>
+        <span class="brand-tagline">Deep Understanding. Elegant Simplicity. Amplified by AI.</span>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="https://ossscan.com" target="_blank" rel="noreferrer">OSSScan</a>
+        <a href="https://www.toomanycomics.app" target="_blank" rel="noreferrer">Too Many Comics</a>
+        <a href="bigbrain-visualizer.html">BigBrain Visualizer</a>
+        <a href="#download" class="btn-nav">Download</a>
+      </nav>
+    </div>
+  </header>
+  <div class="page-body">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-eyebrow">Products</div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:16px; flex-wrap:wrap;">
+          <img src="BigBrainVisualizer.png" alt="BigBrain Visualizer icon" style="height:72px; width:72px; border-radius:16px; object-fit:contain; box-shadow:0 0 0 2px #4ab3f4, 0 0 16px rgba(74,179,244,.35);" />
+          <h1 style="margin:0;">BigBrain Visualizer</h1>
+        </div>
+        <p class="hero-sub">A Mac app that shows a software system as a map anyone can walk, built and kept current by your own coding agent. The demos, the viewers, and inspecting a file someone sent you are free. A system of your own is a subscription with a 14-day trial.</p>
+        <div class="hero-actions">
+          <a href="#download">Download for Mac</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-label">What it is</div>
+        <h2>Your system, as a map a non-programmer can walk.</h2>
+        <p>BigBrain Visualizer shows a software system as a 3D map: its parts, the connections between them, and the scenarios that run through them, laid out so that someone who does not read code can follow what the system does. Your own coding agent, Claude Code or GitHub Copilot, reads the code, builds the map, answers questions about it, and keeps it current as the code changes. Nothing is sent to us: the code stays in your checkouts, the agent runs under your own account, and everything BigBrain learns is kept in a folder on your Mac.</p>
+        <p>An inspection lets a group walk the system together, leave comments and To Do's on the map, mark what they have checked, and close with a report. A specialist outside the team is sent a file instead: they open it for free, walk it, play its scenarios with narration, and send their notes back. The free headset viewer opens the same file on Apple Vision Pro, so a system can be walked in a room rather than on a screen.</p>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <div class="section-label">Free and paid</div>
+        <h2>The free side is what someone made for you to look at. A system of your own is the product.</h2>
+        <div class="sides">
+          <div class="side free">
+            <div class="side-num">Free, no account</div>
+            <h3>Look</h3>
+            <ul>
+              <li><strong>The three demos</strong>, with every feature working inside them, the paid ones included.</li>
+              <li><strong>Inspecting a file someone sent you</strong>: open it, walk the map, play its scenarios with narration, write comments, To Do's and questions, and send them back.</li>
+              <li><strong>The viewers</strong>: open a sent file, walk it and play it on Apple Vision Pro, iPhone, iPad or Windows.</li>
+            </ul>
+          </div>
+          <div class="side paid">
+            <div class="side-num">Subscription</div>
+            <h3>Build</h3>
+            <ul>
+              <li><strong>A system of your own</strong>: build the map from your code, ask the agent about it, run inspections, share with specialists, and keep the map current.</li>
+              <li><strong>One seat is one person, on one Mac at a time.</strong> Signing in on another Mac takes the seat with it.</li>
+              <li><strong>A 14-day trial, with no card.</strong> The download is free and the seat is bought inside the app. When a seat lapses nothing is lost: the app opens the demos and sent files until it is renewed.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-label">Price</div>
+        <h2>One price for one person. A team plan by the seat.</h2>
+        <div class="plans">
+          <div class="plan">
+            <h3>One person</h3>
+            <p class="price">29 USD <small>a month</small></p>
+            <p>Or 290 USD a year. One seat, one Mac at a time, every feature. Starts with a 14-day trial, no card needed.</p>
+          </div>
+          <div class="plan">
+            <h3>Team</h3>
+            <p class="price">29 USD <small>a seat a month</small></p>
+            <p>Seats assigned to people by the owner, on one invoice. A seat can be moved to another person.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="download">
+      <div class="wrap">
+        <div class="section-label">Download</div>
+        <h2>Free to download. The demos run with no sign-in.</h2>
+        <p>Pick the build for your Mac. Apple silicon is any Mac with an M series chip; Intel is any Mac from before. Unzip the file and drag the app to Applications. Each build is signed and notarized, and the app updates itself from then on.</p>
+        <div class="downloads" id="downloads">
+          <div class="download" data-arch="arm64">
+            <p class="download-tag" data-role="tag"></p>
+            <p class="download-title">Apple silicon</p>
+            <p class="download-for">Macs with an M series chip</p>
+            <a class="button" data-role="link" href="#">Download for Apple silicon</a>
+            <p class="download-version" data-role="version"></p>
+          </div>
+          <div class="download" data-arch="x86_64">
+            <p class="download-tag" data-role="tag"></p>
+            <p class="download-title">Intel</p>
+            <p class="download-for">Macs with an Intel processor</p>
+            <a class="button" data-role="link" href="#">Download for Intel</a>
+            <p class="download-version" data-role="version"></p>
+          </div>
+        </div>
+        <p class="note"><strong>Requirements.</strong> BigBrain Visualizer is a Mac app only, for macOS 15 or later. To build a system of your own it needs a coding agent, Claude Code or GitHub Copilot, installed and signed in on the Mac. The demos and sent files need neither an agent nor an account.</p>
+        <p class="note">Not sure which Mac you have? Choose About This Mac from the Apple menu: a chip beginning with M is Apple silicon, and a processor from Intel is Intel.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-label">Viewers</div>
+        <h2>Open a sent file anywhere, free.</h2>
+        <p>The viewers open the files the Mac app exports and play them. They sell nothing and need no account.</p>
+        <div class="rows">
+          <div class="row">
+            <p>Apple Vision Pro<small>Walk a system in a room. Free on the App Store.</small></p>
+            <!-- PLACEHOLDER: replace with the App Store link for the Vision Pro viewer when it is published. -->
+            <span class="placeholder">App Store link to come</span>
+          </div>
+          <div class="row">
+            <p>iPhone and iPad<small>Open a sent file and walk it on a phone or tablet. Free on the App Store.</small></p>
+            <!-- PLACEHOLDER: replace with the App Store link for the iPhone and iPad viewer when it is published. -->
+            <span class="placeholder">App Store link to come</span>
+          </div>
+          <div class="row">
+            <p>Windows<small>A free viewer for opening sent files on a PC. There is no Windows build of the app itself.</small></p>
+            <!-- PLACEHOLDER: replace with the Windows viewer's download link when it is published. -->
+            <span class="placeholder">Download link to come</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <div class="section-label">More</div>
+        <h2>The guide and the policies.</h2>
+        <div class="rows">
+          <div class="row">
+            <p>User guide<small>How to open a system, build the map, ask the agent, and run an inspection.</small></p>
+            <!-- PLACEHOLDER: replace with the link to the published user guide. -->
+            <span class="placeholder">Link to come</span>
+          </div>
+          <div class="row">
+            <p>Privacy policy<small>What the license service holds about you, which is an email address, a device hash and a subscription state, and nothing of your work.</small></p>
+            <a class="button" href="privacy.html">Read the policy</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2026 BigBrainCorp LLC &middot; <a href="index.html">Home</a> &middot; <a href="products.html">Products</a> &middot; <a href="https://ossscan.com" target="_blank" rel="noreferrer">OSSScan</a> &middot; <a href="https://www.toomanycomics.app" target="_blank" rel="noreferrer">Too Many Comics</a> &middot; <a href="bigbrain-visualizer.html">BigBrain Visualizer</a> &middot; <a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+  // The license service that serves the downloads. It does not exist yet:
+  // replace this one value with the service's base address when it is deployed.
+  // The page calls GET /downloads for the version line under each button, and
+  // the buttons point at GET /downloads/arm64 and GET /downloads/x86_64.
+  const LICENSE_SERVICE_BASE_URL = 'https://PLACEHOLDER-license-service.invalid';
+
+  const MANIFEST_URL = `${LICENSE_SERVICE_BASE_URL}/downloads`;
+  const ARCHITECTURES = ['arm64', 'x86_64'];
+
+  // Point each button at its download call. This runs before any network call,
+  // so the buttons work the same whether or not the service answers.
+  for (const card of document.querySelectorAll('.download[data-arch]')) {
+    card.querySelector('[data-role="link"]').href = `${LICENSE_SERVICE_BASE_URL}/downloads/${card.dataset.arch}`;
+  }
+
+  // Which build this Mac needs, when the browser can tell. Chromium browsers say
+  // through User-Agent Client Hints; Safari does not say, and reports an Intel
+  // Mac on every Mac, so a Safari visitor sees both builds side by side.
+  async function detectArchitecture() {
+    try {
+      const isMac = /Mac/.test(navigator.platform || '') || /Macintosh/.test(navigator.userAgent);
+      if (!isMac) return null;
+      const uaData = navigator.userAgentData;
+      if (!uaData || !uaData.getHighEntropyValues) return null;
+      const values = await uaData.getHighEntropyValues(['architecture']);
+      if (values.architecture === 'arm') return 'arm64';
+      if (values.architecture === 'x86') return 'x86_64';
+    } catch (err) {
+      // Nothing to do: both builds stay in their default order.
+    }
+    return null;
+  }
+
+  function offerFirst(arch) {
+    const list = document.getElementById('downloads');
+    const card = list.querySelector(`.download[data-arch="${arch}"]`);
+    if (!card) return;
+    card.classList.add('recommended');
+    card.querySelector('[data-role="tag"]').textContent = 'For this Mac';
+    list.prepend(card);
+  }
+
+  function formatSize(bytes) {
+    const n = Number(bytes);
+    if (!Number.isFinite(n) || n <= 0) return '';
+    const mb = n / (1024 * 1024);
+    return `${mb >= 100 ? Math.round(mb) : mb.toFixed(1)} MB`;
+  }
+
+  function formatDate(value) {
+    if (!value) return '';
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return String(value);
+    // A release date is a day, not a moment: read it in UTC so that a date
+    // such as 2026-11-04 does not show as the day before in US time zones.
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+  }
+
+  // GET /downloads answers with the current version and, for each architecture,
+  // the download address, size and release date. The exact field names are
+  // settled when the service is built; this reads the likely spellings.
+  function describe(manifest, arch) {
+    const perArch = (manifest.downloads && manifest.downloads[arch]) || manifest[arch] || {};
+    const version = perArch.version || manifest.version || '';
+    const size = formatSize(perArch.size ?? perArch.bytes ?? perArch.sizeBytes);
+    const date = formatDate(perArch.releaseDate ?? perArch.released ?? perArch.date ?? manifest.releaseDate ?? manifest.released);
+    const parts = [];
+    if (version) parts.push(`Version ${version}`);
+    if (size) parts.push(size);
+    if (date) parts.push(`released ${date}`);
+    return parts.join(', ');
+  }
+
+  async function fillVersions() {
+    let manifest;
+    try {
+      const resp = await fetch(MANIFEST_URL, { headers: { 'Accept': 'application/json' } });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      manifest = await resp.json();
+    } catch (err) {
+      // The service is not answering. The buttons stay as they are and the
+      // version lines stay empty.
+      return;
+    }
+    for (const arch of ARCHITECTURES) {
+      const card = document.querySelector(`.download[data-arch="${arch}"]`);
+      if (!card) continue;
+      card.querySelector('[data-role="version"]').textContent = describe(manifest, arch);
+    }
+  }
+
+  detectArchitecture().then(arch => { if (arch) offerFirst(arch); });
+  fillVersions();
+  </script>
+</body>
+</html>
