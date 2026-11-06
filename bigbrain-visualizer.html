@@ -464,15 +464,16 @@
   </footer>
 
   <script>
-  // The license service that lists the downloads. It does not exist yet:
-  // replace this one value with the service's base address when it is deployed.
+  // The license service that lists the downloads, through its gateway. The beta
+  // runs on the gateway's Azure name; the custom domain comes with the public
+  // release (the service repo's TODO.md), and this is the one value to change.
   // The page calls GET /downloads, which gives each build's public address,
   // size, SHA-256 and release date; the buttons point at those addresses once
   // it answers, and at GET /downloads/arm64 and /downloads/x86_64 until then.
   // While the beta runs, GET /downloads asks for the beta code (403
   // beta_code_needed); the page then shows a code box and sends the code in
   // the X-Beta-Code header.
-  const LICENSE_SERVICE_BASE_URL = 'https://PLACEHOLDER-license-service.invalid';
+  const LICENSE_SERVICE_BASE_URL = 'https://bbsystemvisualizer-apim.azure-api.net/bigbrain';
 
   const MANIFEST_URL = `${LICENSE_SERVICE_BASE_URL}/downloads`;
   const ARCHITECTURES = ['arm64', 'x86_64'];
