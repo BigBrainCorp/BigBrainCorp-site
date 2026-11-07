@@ -248,44 +248,6 @@
     .promise h3 { font-size: 14px; font-weight: 700; color: #0b1a3d; margin: 0 0 8px; }
     .promise p { font-size: 13px; color: #556; line-height: 1.55; margin: 0; }
 
-    /* Free and paid, side by side */
-    .sides {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    @media (min-width: 700px) { .sides { grid-template-columns: 1fr 1fr; } }
-    .side {
-      background: #fff;
-      border: 1px solid #d0d9e8;
-      border-radius: 14px;
-      padding: 28px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-    .side::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-    }
-    .side.free::before { background: #4ab3f4; }
-    .side.paid::before { background: #1056b8; }
-    .side-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .side.free .side-num { color: #4ab3f4; }
-    .side.paid .side-num { color: #1056b8; }
-    .side h3 { font-size: 20px; margin: 0 0 12px; }
-    .side p, .side li { font-size: 14px; color: #556; line-height: 1.6; }
-    .side ul { padding-left: 18px; margin: 0; }
-    .side li { margin-bottom: 8px; }
-    .side li:last-child { margin-bottom: 0; }
-
     /* Downloads */
     .downloads {
       display: grid;
@@ -420,10 +382,10 @@
         <div class="hero-eyebrow">Products</div>
         <div style="display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:16px; flex-wrap:wrap;">
           <img src="BigBrainVisualizer.png" alt="BigBrain Visualizer icon" style="height:72px; width:72px; border-radius:16px; object-fit:contain; box-shadow:0 0 0 2px #4ab3f4, 0 0 16px rgba(74,179,244,.35);" />
-          <h1 style="margin:0;">Your agent wrote more code than you can read.<br />Walk what it built instead.</h1>
+          <h1 style="margin:0;">Do you know exactly how your system works?</h1>
         </div>
         <div style="margin-bottom:16px;"><span class="beta-pill">Closed beta</span></div>
-        <p class="hero-sub">BigBrain System Visualizer is a Mac app that shows a software system as a map anyone can walk, built and kept current by your own coding agent. The demos, the viewers, and inspecting a file someone sent you are free. A system of your own is a subscription; the demo shows every feature before you decide.</p>
+        <p class="hero-sub">If an AI coding agent wrote it and you do not read code, the honest answer today is no. BigBrain System Visualizer is a Mac app that shows your system as a map you can walk, built and kept current by the agent that wrote the code, so you can see exactly what was built, ask about any part of it, and bring in people you trust to look too.</p>
         <p class="hero-beta">The app is in a closed beta: a seat comes with a beta code, and the app and the service may change while the beta runs.</p>
         <div class="hero-actions">
           <a href="#download">Download for Mac</a>
@@ -434,8 +396,8 @@
     <section>
       <div class="wrap">
         <div class="section-label">The problem</div>
-        <h2>Software that works, more or less, and that nobody can honestly say they have reviewed.</h2>
-        <p>An AI coding agent can write ten thousand lines of code to add a feature in an afternoon, and the next feature the next day. No person can read that much, and the usual code review, where someone reads the lines that changed and says whether they look right, stops being possible.</p>
+        <h2>Why the honest answer is no, even when the system works.</h2>
+        <p>You described what you wanted, and the agent built it, filling every gap in your description with its own judgment. It works: people use it, it may even take payments. But you have no idea how the code does what it does, and you cannot find out by reading it. An agent can write ten thousand lines in an afternoon and the next feature the next day. No person can read that much, and the usual code review, where someone reads the lines that changed and says whether they look right, stops being possible. Testing does not close the gap either: you can only test what you know to look for.</p>
         <p>Reading the lines would not find the problems anyway. Code an agent writes is clean on its surface: it compiles, it is tidy, it looks right. The mistakes that matter are mismatches between what the code does and what the system was meant to do: a step skipped, a rule applied in the wrong place, a part that depends on something it should not, a failure nobody handles. Those are questions about the design, and code is a poor place to answer them.</p>
         <p>Picture a house built by a crew that filled every gap in the drawings with its own judgment. The drawings did not say how to get from the garage to the bedrooms at night, so the crew cut a door straight from the garage into the children's bedroom. It is well made, it closes nicely, and no architect would allow it. Nobody should move in until someone has walked every room and seen what was actually built. Software built by an agent is that house.</p>
       </div>
@@ -477,8 +439,8 @@
             <p>An inspection records who looked at what, so the map shows what nobody has reached yet. Comments and To Do's, with Must do, Should do and Nice to have, end in a report.</p>
           </div>
           <div class="reason">
-            <h3>Send one scenario to a specialist</h3>
-            <p>A specialist outside the team gets one file: the scenario and the part of the map it walks through, with no source code in it. They open it for free, walk it, and send their notes back.</p>
+            <h3>Bring in experts without handing over the code</h3>
+            <p>A security reviewer, an architect or an auditor walks your system from a file you send them, with the free viewer, and leaves findings. The file holds the map and the scenarios, not the source, and nobody gets access to the code or the repository.</p>
           </div>
           <div class="reason">
             <h3>Stays current from your commits</h3>
@@ -489,8 +451,8 @@
             <p>The map, the answers and the notes live in a library folder of their own on your Mac. Fixes go to your own coding agent as prompts, and you approve every change there, as you always do.</p>
           </div>
           <div class="reason">
-            <h3>Try every feature in the demo first</h3>
-            <p>Three demos come with the app, with every feature working inside them, the paid ones included. They need no account and no agent. Buy a seat only when you want a system of your own.</p>
+            <h3>Learn it on the demo first</h3>
+            <p>Three demos come with the app, with every feature working inside them and a narrated tour of each. They need no account and no agent, so you can see what understanding a system looks like before you open your own.</p>
           </div>
         </div>
       </div>
@@ -546,9 +508,9 @@
             <p>Each inspection keeps a snapshot of the map it inspected. When the next release is ready, the team starts a new inspection and chooses to inspect what changed since the last one. New parts are green, parts whose job or connections changed are amber, and everything that did not change fades away. Each person takes the changes they know best, the sidebar lists the changes nobody has reached, and the report says, change by change, who looked at it.</p>
           </div>
           <div class="story">
-            <p class="story-label">The specialist</p>
-            <h3>A specialist inspects one scenario</h3>
-            <p>A payments expert outside the team, with no access to the code, is sent one file: the scenario and the part of the map it walks through, with no source code in it. They open it in the free viewer, and the scenario plays for them step by step, read aloud. They leave comments and a To Do, write a question for the owner's agent, and send the file back. Nothing enters the owner's map until the owner accepts it; then the specialist's report is part of the map.</p>
+            <p class="story-label">The outside expert</p>
+            <h3>An expert reviews the system without ever seeing the code</h3>
+            <p>Before launch, the owner wants a security reviewer they trust to look at how payments and personal data move through the system. The reviewer is not on the team and must not be given the code or the repository. The owner selects the scenarios that matter and sends one file: the map and those scenarios, with no source code in it. The reviewer opens it in the free viewer, plays each scenario step by step, goes inside the parts it passes through, and leaves findings, comments and To Do's, with a question for the owner's agent where the map is not enough. They send the file back. Nothing enters the owner's map until the owner accepts it; then the review is part of the map, and the code never left the owner's Mac. An architect or an auditor is brought in the same way.</p>
           </div>
         </div>
       </div>
@@ -605,30 +567,7 @@
     <section class="alt">
       <div class="wrap">
         <div class="section-label">Free and paid</div>
-        <h2>The free side is what someone made for you to look at. A system of your own is the product.</h2>
-        <div class="sides">
-          <div class="side free">
-            <div class="side-num">Free, no account</div>
-            <h3>Look</h3>
-            <ul>
-              <li><strong>The three demos</strong>, with every feature working inside them, the paid ones included.</li>
-              <li><strong>Inspecting a file someone sent you</strong>: open it, walk the map, play its scenarios with narration, write comments, To Do's and questions, and send them back.</li>
-              <li><strong>The viewers</strong>: open a sent file, walk it and play it on Apple Vision Pro, on iPhone, iPad and iPhone Duo, or in the browser on Windows and Linux.</li>
-            </ul>
-          </div>
-          <div class="side paid">
-            <div class="side-num">Subscription</div>
-            <h3>Build</h3>
-            <ul>
-              <li><strong>A system of your own</strong>: build the map from your code, ask the agent about it, run inspections, share with specialists, and keep the map current.</li>
-              <li><strong>One seat is one person, on one Mac at a time.</strong> Signing in on another Mac takes the seat with it.</li>
-              <li><strong>Try it on the demo first.</strong> The download is free, the demo has every feature, and the seat is bought inside the app. When a seat lapses nothing is lost: the app opens the demos and sent files until it is renewed.</li>
-            </ul>
-          </div>
-        </div>
-        <h3 style="margin-top:28px;">One seat for one person. A team plan by the seat.</h3>
-        <p>During the beta a seat comes with the beta code at no charge. Pricing for one person and for teams will be announced when the beta ends, and a seat will be bought inside the app.</p>
-        <p>A personal seat is one person on one Mac at a time, with every feature. A team plan is by the seat: the owner assigns seats to people, on one invoice, and can move a seat to another person.</p>
+        <p>BigBrain System Visualizer is a Mac app that shows a software system as a map anyone can walk, built and kept current by your own coding agent. The demos, the viewers, and inspecting a file someone sent you are free. A system of your own is a subscription; the demo shows every feature before you decide.</p>
       </div>
     </section>
 
