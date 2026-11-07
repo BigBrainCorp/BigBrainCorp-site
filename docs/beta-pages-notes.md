@@ -102,3 +102,5 @@ What differs, because the Visualizer sells seats and signs people in:
   script, so it shows whenever the code box shows.
 - `security.html` names the app as "BigBrain System Visualizer" in the `spctl` command.
   Check the installed app's bundle name matches before pushing.
+- The product page's Why section is drawn from the app repository's design document
+  `docs/00-why-bigbrain.md`, cut to the site's plain style, with no names from its demo.

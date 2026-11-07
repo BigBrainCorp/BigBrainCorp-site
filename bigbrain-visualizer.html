@@ -138,6 +138,23 @@
     }
     .button:hover { background: #0b4a9d; }
 
+    /* Why: three short cases */
+    .cases {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin: 8px 0 24px;
+    }
+    @media (min-width: 700px) { .cases { grid-template-columns: 1fr 1fr 1fr; } }
+    .case {
+      border: 1px solid #d0d9e8;
+      border-radius: 12px;
+      background: #fff;
+      padding: 20px 22px;
+    }
+    .case h3 { font-size: 16px; margin: 0 0 8px; }
+    .case p { font-size: 14px; color: #556; line-height: 1.6; margin: 0; }
+
     /* Free and paid, side by side */
     .sides {
       display: grid;
@@ -330,6 +347,32 @@
 
     <section class="alt">
       <div class="wrap">
+        <div class="section-label">Why</div>
+        <h2>Walk what was built, instead of reading how it was written.</h2>
+        <p>An AI coding agent can write ten thousand lines of code to add a feature in an afternoon, and the next feature the next day. No person can read that much, and the usual code review, where someone reads the lines that changed and says whether they look right, stops being possible.</p>
+        <p>Reading the lines would not find the problems anyway. Code an agent writes is clean on its surface: it compiles, it is tidy, it looks right. The mistakes that matter are mismatches between what the code does and what the system was meant to do: a step skipped, a rule applied in the wrong place, a part that depends on something it should not, a failure nobody handles. Those are questions about the design, and code is a poor place to answer them.</p>
+        <p>Picture a house built by a crew that filled every gap in the drawings with its own judgment. The drawings did not say how to get from the garage to the bedrooms at night, so the crew cut a door straight from the garage into the children's bedroom. It is well made, it closes nicely, and no architect would allow it. Nobody should move in until someone has walked every room and seen what was actually built. Software built by an agent is that house.</p>
+        <p>The way to find that door is not to read the drawings again; it is not on them. It is a home inspection: walk the rooms, open the panels, and write down what is sound and what needs attention. BigBrain System Visualizer does the same for software. Your own coding agent reads the code and draws the map; you walk it, play the scenarios that matter, ask questions, and leave comments and To Do's. The review moves from the code to the design, where people can take part in it again.</p>
+        <div class="cases">
+          <div class="case">
+            <h3>An owner who does not read code reviews what the agent built</h3>
+            <p>The owner built the booking app with Claude Code and has never read its code. On the map they see the pieces they know, and one they do not: a part that runs every night. They ask, and it is a job that emails members who have not booked in a month, which nobody asked for. Their door from the garage, found without reading a line.</p>
+          </div>
+          <div class="case">
+            <h3>A second release inspects only what changed</h3>
+            <p>The map compares the new release with the one inspected last time. New parts are green, changed ones amber, and everything that did not change fades away. The team takes the changes they know best, and the report says, change by change, who looked at it.</p>
+          </div>
+          <div class="case">
+            <h3>A specialist inspects one scenario</h3>
+            <p>A payments expert outside the team, with no access to the code, is sent one file: the scenario and the part of the map it walks through, with no source code in it. The scenario plays for them step by step, they leave comments, To Do's and a question, and send the file back. Nothing enters the map until the owner accepts it.</p>
+          </div>
+        </div>
+        <p>AI can write more code than people can read. BigBrain System Visualizer does not ask people to read it. It gives them a map to walk, scenarios to follow, tests to check, an expert to ask, and a place to say what is good and what must change. The agent explains and proposes; people decide, and approve every fix in their own tools. That is what a review was always for.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
         <div class="section-label">Free and paid</div>
         <h2>The free side is what someone made for you to look at. A system of your own is the product.</h2>
         <div class="sides">
@@ -355,7 +398,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="alt">
       <div class="wrap">
         <div class="section-label">Plans</div>
         <h2>One seat for one person. A team plan by the seat.</h2>
@@ -364,7 +407,7 @@
       </div>
     </section>
 
-    <section class="alt" id="download">
+    <section id="download">
       <div class="wrap">
         <div class="section-label">Download</div>
         <h2>Free to download. The demos run with no sign-in.</h2>
@@ -401,7 +444,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="alt">
       <div class="wrap">
         <div class="section-label">Viewers</div>
         <h2>Open a sent file anywhere, free.</h2>
@@ -425,7 +468,7 @@
       </div>
     </section>
 
-    <section class="alt">
+    <section>
       <div class="wrap">
         <div class="section-label">More</div>
         <h2>The guide and the policies.</h2>
