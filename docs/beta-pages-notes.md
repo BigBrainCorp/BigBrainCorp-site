@@ -2,29 +2,22 @@
 
 Written on November 7, 2026 while preparing the site for the closed beta.
 
-## Placeholders for the owner to fill in
+## Decisions the owner has made
 
-Each one is marked in the page with an HTML comment beginning `PLACEHOLDER:` and, where
-a visitor would see it, with the words "to be confirmed" in the text.
+No placeholder is left in any page.
 
-1. `privacy.html`, section "The BigBrain Visualizer App and Its License Service", under
-   "How long records are kept": how long audit events are kept. The other product's pages
-   state no period for events, and the service's retention job is not built yet, so the
-   page says the period is to be confirmed. Replace it with a number of days or months.
-2. `terms.html`, `security.html` and the new privacy section all use
-   `Info@BigBrainCorp.com` as the contact address, because it is the support address the
-   site already shows for Too Many Comics and the writing rules keep personal names off the
-   site. The privacy page's existing header and Contact section still show the older
-   personal address. Decide whether the two should be made the same.
-3. Effective dates: `terms.html` says November 7, 2026, and the privacy page's effective
-   date was moved from October 30, 2026 to November 7, 2026 because its content changed.
-   Change both to the day you push if that is later.
+- Audit event retention is twelve months: sign-in, activation and seat events are kept for
+  twelve months, then deleted. A nightly job in the service will enforce it once built.
+- The contact address for BigBrain Visualizer is `Info@BigBrainCorp.com` everywhere on the
+  site, and the privacy page's header and Contact section now show that address too, so
+  the whole page shows one address.
+- The effective dates on `terms.html` and `privacy.html` are November 7, 2026. Move them to
+  the push date if the owner pushes later.
 
-Nothing else is a placeholder. The legal entity (BigBrainCorp LLC), the governing law
-(Arizona, courts of Maricopa County), the liability cap (the lesser of fees paid in the
-previous twelve months or 100 US dollars), the 30 day response time for data requests, the
-record retention wording, and the under 13 rule are all taken from the other product's
-pages as they stand today.
+The legal entity (BigBrainCorp LLC), the governing law (Arizona, courts of Maricopa
+County), the liability cap (the lesser of fees paid in the previous twelve months or 100 US
+dollars), the 30 day response time for data requests, the record retention wording, and the
+under 13 rule are all taken from the other product's pages as they stand today.
 
 ## Final page addresses
 
