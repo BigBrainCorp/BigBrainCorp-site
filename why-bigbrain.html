@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Why BigBrain System Visualizer | BigBrainCorp</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="description" content="Why BigBrain System Visualizer exists: AI agents write more code than people can read, so the review has to move from the code to the design. The problem, the house, the home inspection, how it works, the scenarios, and what makes it different." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://bigbraincorp.com/why-bigbrain.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Why BigBrain System Visualizer | BigBrainCorp" />
+  <meta property="og:description" content="Why BigBrain System Visualizer exists: AI agents write more code than people can read, so the review has to move from the code to the design. The problem, the house, the home inspection, how it works, the scenarios, and what makes it different." />
+  <meta property="og:url" content="https://bigbraincorp.com/why-bigbrain.html" />
+  <meta property="og:image" content="https://bigbraincorp.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="BigBrainCorp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Why BigBrain System Visualizer | BigBrainCorp" />
+  <meta name="twitter:description" content="Why BigBrain System Visualizer exists: AI agents write more code than people can read, so the review has to move from the code to the design. The problem, the house, the home inspection, how it works, the scenarios, and what makes it different." />
+  <meta name="twitter:image" content="https://bigbraincorp.com/og-image.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, #0b1a3d 0%, #0d2460 60%, #0e2d7a 100%);
+      border-bottom: 2px solid #4ab3f4;
+      padding: 0 24px;
+    }
+    .site-header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 64px;
+    }
+    .site-header img.logo {
+      height: 44px;
+      width: 44px;
+      border-radius: 10px;
+      object-fit: contain;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px #4ab3f4, 0 0 10px rgba(74,179,244,.4);
+    }
+    .site-header-wordmark { display: flex; flex-direction: column; line-height: 1.1; }
+    .site-header-wordmark .brand-name { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+    .site-header-wordmark .brand-tagline { font-size: 11px; color: #4ab3f4; letter-spacing: 0.06em; text-transform: uppercase; }
+    .header-nav { margin-left: auto; display: flex; gap: 18px; align-items: center; }
+    .header-nav a { color: #a8c8ea; text-decoration: none; font-size: 13px; font-weight: 500; transition: color .15s; }
+    .header-nav a:hover { color: #fff; }
+    .header-nav .btn-nav { background: #4ab3f4; color: #0b1a3d; padding: 7px 16px; border-radius: 6px; font-weight: 700; font-size: 13px; }
+    .header-nav .btn-nav:hover { background: #6cc6f8; }
+
+    .hero {
+      background: linear-gradient(160deg, #0b1a3d 0%, #0d2460 50%, #0e2d7a 100%);
+      color: #fff;
+      padding: 64px 24px 72px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4ab3f4;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      margin: 0 0 20px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: #a8c8ea;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+    .beta-pill {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #4ab3f4;
+      border: 1px solid #4ab3f4;
+      border-radius: 999px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+    .alt .beta-pill, section:not(.hero) .beta-pill { color: #1056b8; border-color: #1056b8; }
+    .hero-beta { font-size: 14px; color: #a8c8ea; max-width: 700px; margin: 14px auto 0; line-height: 1.6; }
+    .hero-actions { margin-top: 28px; }
+    .hero-actions a {
+      display: inline-block;
+      background: #4ab3f4;
+      color: #0b1a3d;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .hero-actions a:hover { background: #6cc6f8; }
+    .article h3 { font-size: 18px; margin: 24px 0 10px; }
+    .article li { margin-bottom: 10px; }
+    .story { border: 1px solid #d0d9e8; border-radius: 12px; background: #fff; padding: 22px 24px; margin-bottom: 16px; }
+    .story h3 { font-size: 18px; margin: 0 0 10px; }
+    .story p { margin: 0 0 10px; font-size: 15px; color: #445; line-height: 1.65; }
+    .story p:last-child { margin-bottom: 0; }
+    .back { display: inline-block; margin-top: 8px; font-weight: 600; }
+
+    .page-body { flex: 1; }
+    section { padding: 60px 24px; }
+    section.alt { background: #f4f6f9; }
+    .wrap { max-width: 800px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1056b8;
+      margin: 0 0 10px;
+    }
+    h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: #0b1a3d; margin: 0 0 16px; line-height: 1.2; }
+    h3 { font-size: 20px; font-weight: 800; color: #0b1a3d; margin: 0 0 12px; }
+    p { font-size: 16px; color: #334; line-height: 1.7; margin: 0 0 16px; }
+    p:last-child { margin-bottom: 0; }
+    ul { margin: 0 0 16px; padding-left: 22px; }
+    li { font-size: 16px; color: #334; line-height: 1.7; margin-bottom: 6px; }
+    a { color: #1056b8; }
+
+    .site-footer {
+      background: #0b1a3d;
+      border-top: 1px solid #1e3a6e;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .site-footer p { margin: 0; font-size: 12px; color: #6e8db5; line-height: 1.6; }
+    .site-footer a { color: #4ab3f4; text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* ── Mobile ──
+       The header packs the logo, tagline, and full nav into one fixed-height,
+       non-wrapping row. On a phone that overflows the viewport and scrolls
+       sideways. Unlike OSSScan (which repeats its links in a secondary nav),
+       this header is the site's only navigation, so the links must wrap onto
+       their own row rather than be hidden. Must stay last to win on source order. */
+    @media (max-width: 640px) {
+      .site-header { padding: 0 16px; }
+      .site-header-inner { height: auto; flex-wrap: wrap; padding: 12px 0; gap: 12px; }
+      .site-header-wordmark .brand-tagline { display: none; }
+      .header-nav { margin-left: 0; width: 100%; flex-wrap: wrap; gap: 12px 18px; }
+      section { padding: 44px 20px; }
+      .hero { padding: 48px 20px 56px; }
+      .row { flex-wrap: wrap; }
+    }
+
+    /* Very narrow: original iPhone SE and phones with Display Zoom enabled
+       (a 390pt device rendered at a 320px CSS viewport). Inert at 375px and up. */
+    @media (max-width: 374px) {
+      .site-header { padding: 0 12px; }
+      .header-nav { gap: 10px 14px; }
+      .header-nav a:not(.btn-nav) { font-size: 12px; }
+      p a, li a { overflow-wrap: anywhere; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <img class="logo" src="BigBrainCorpIcon.png" alt="BigBrainCorp icon" />
+      <div class="site-header-wordmark">
+        <span class="brand-name">BigBrainCorp</span>
+        <span class="brand-tagline">Deep Understanding. Elegant Simplicity. Amplified by AI.</span>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="https://ossscan.com" target="_blank" rel="noreferrer">OSSScan</a>
+        <a href="https://www.toomanycomics.app" target="_blank" rel="noreferrer">Too Many Comics</a>
+        <a href="bigbrain-visualizer.html">BigBrain Visualizer</a>
+        <a href="bigbrain-visualizer.html#download" class="btn-nav">Download</a>
+      </nav>
+    </div>
+  </header>
+  <div class="page-body">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-eyebrow">Why</div>
+        <h1 style="margin:0 0 20px;">Why BigBrain System Visualizer</h1>
+        <p class="hero-sub">BigBrain System Visualizer, BigBrain Visualizer for short, is a Mac app that explains a software system as a 3D map you walk through, built from the code by the coding agent you already have. This page is the case for it: the problem, the idea, how it works, and what it looks like in use.</p>
+        <div class="hero-actions"><a href="bigbrain-visualizer.html">Back to the product page</a></div>
+      </div>
+    </section>
+
+    <section class="article">
+      <div class="wrap">
+        <div class="section-label">The problem</div>
+        <h2>Software that works, more or less, and that no human can honestly say they have reviewed.</h2>
+        <p>An AI coding agent can write ten thousand lines of code to add a feature in an afternoon. The next feature follows the next day. No person can read that much code to find what is wrong with it, and the traditional code review, where a person reads the lines that changed and says whether they look right, stops being feasible.</p>
+        <p>Imagine a house built from an architect's drawings by a crew that worked fast, never asked a question, and filled every gap in the drawings with its own best judgment. The drawings did not say how the family would get from the garage to the bedrooms at night, so the crew cut a door straight from the garage into the children's bedroom. It saves a walk around the house in the rain. It is well made, square, and it closes nicely. The architect would reject it on the spot: a garage is kept apart from the rooms people sleep in because of exhaust fumes and fire, and no convenience is worth that. But the architect was not asked, and the door does not appear on any drawing. The family could live in that house for a year and only find out when something went wrong. Nobody should move in until someone has walked every room and seen what was actually built.</p>
+        <p>Software built by an agent is that house. Take someone who has never written code and has built a real application with Claude Code: customers use it, it takes payments, it works. They described what they wanted, the agent built it, filling every gap with its own judgment, and they have no idea how the code actually does it. How do they know nothing like that door was built in? A step the agent added because it seemed sensible, a rule nobody asked for, data kept that should not be, a shortcut taken under a corner nobody described. You can test such an application for a long time and never run into a feature or an implementation that was not intended, because you only test what you know to look for.</p>
+        <p>Reading the lines would not find the problems anyway. Code written by an agent is clean on its surface: it compiles, it is tidy, it follows the conventions, and it looks right. The mistakes that matter are not typos or slips a reader could catch. They are mismatches between what the code does and what the system was meant to do: a step that was skipped, a rule applied in the wrong place, a part that now depends on something it should not, a failure nobody handles. Those are questions about the system's design and its intentions, and looking at code is a poor way to answer them.</p>
+        <ul>
+          <li><strong>A diff shows lines, not the system.</strong> A diff, the list of lines added and removed, says what changed. It does not say what the system does, how its parts depend on each other, or what else the change puts at risk.</li>
+          <li><strong>Owners are shut out.</strong> Many people who own AI-built software do not read code. The two explanations on offer, technical jargon or the code itself, leave them unable to say whether the system does what they asked, where it is fragile, or what to test after a fix.</li>
+          <li><strong>The volume only grows.</strong> Whatever a team can review by reading today, the agents will outrun tomorrow.</li>
+        </ul>
+        <p>The result is software that works, more or less, and that no human can honestly say they have reviewed. The review has to move up a level, from the code to the design the code is supposed to serve: a view of the whole system that a non-coder and a coder can both walk, question and judge.</p>
+      </div>
+    </section>
+
+    <section class="alt article">
+      <div class="wrap">
+        <div class="section-label">The idea</div>
+        <h2>A design review, not a code review.</h2>
+        <p>Back to the house. The way to find that door is not to read the drawings again; it is not on them. It is a home inspection. An inspector does not read blueprints line by line. They walk the house room by room, see how it is lived in, open the panels to check the plumbing and wiring, and write a report: what is sound, what needs attention, and how urgently. The owner, who is not a builder, reads the report and decides what to fix.</p>
+        <p>BigBrain does the same for software. Your own coding agent reads the code and builds the map; you walk it, play the scenarios that matter, ask questions, and leave comments and To Do's, alone or in an inspection with other people. The review is of the scenarios and the design, with the algorithms and the code a step away when they matter. That is what a code review becomes when nobody can read all the code: a design review, which humans can take part in again.</p>
+        <p>It has two jobs, for two kinds of person. The first is to make sure a system an AI agent built does exactly what was asked for, and nothing else: no door cut from the garage into a bedroom. The second is to let someone who has never written code walk through a system and understand it, while a developer or a specialist walks the same map with the detail they need. One map, with the plain words on top and the technical ones a click away, so the owner, the developer and the specialist can talk about the same thing.</p>
+        <p>The second job is as much the point as the first. A newcomer should be able to open a map and, in a few minutes, know what the system is made of and what it does. The developer gets the same map in Detailed mode, with files, functions, data shapes and the cited lines open beside the words, and the specialist gets the lens for their trade: money, personal data, who may enter, what reaches outside. Understanding is not a technical privilege, and detail is not hidden from those who want it.</p>
+      </div>
+    </section>
+
+    <section class="article">
+      <div class="wrap">
+        <div class="section-label">How it works</div>
+        <h2>From a folder to a map, then room by room.</h2>
+        <p>The examples here come from the app's demo: the booking app of a made-up yoga and pilates studio. Its owner knows the studio inside out and code not at all; a coding agent wrote the app, and the owner has never read it. Members find a class on their phone, book a place and pay by card. Behind the app, a booking backend and a set of emails and nightly jobs run as cloud functions, the data sits in a cloud database, and class suggestions come from an AI model. Everything described below can be opened and tried in the demo, and three narrated tours show it in the order it happens: setting up a new system, inspecting it, and inspecting its next release.</p>
+        <h3>From a folder to a map</h3>
+        <p>The owner chooses New System and picks one folder: the app members use. The coding agent reads it and finds what it works with outside that folder: the booking backend, the payment service, the phone's notifications. BigBrain suggests a folder for each one it can find on the Mac, with its reason ("it declares the routes the app calls"), and the owner decides: keep the backend's folder, add the project with the jobs, and leave the payment service and the notifications as outside parts. The agent then reads all three projects and draws the map, walks through each scenario it found, and catalogs every feature. If the owner wants, the clouds the system runs on are added too, now or after the review.</p>
+        <h3>Then the inspection, room by room</h3>
+        <ul>
+          <li><strong>Walk the house room by room.</strong> The system is a map of parts, from the big pieces an owner already knows about (the member app, the booking backend, the messages and nightly jobs, the studio's data, the payment service) down to the modules and functions inside them. You go inside a part to see what it holds, and back out to see where it sits.</li>
+          <li><strong>See how it is lived in.</strong> A scenario walks through one thing the system does, step by step: Book a class, Cancel a booking, Reminder the day before. Each step says what is sent, what comes back and what can go wrong ("the save fails after the card was charged"), and the camera flies to the part where it happens. Play reads the steps aloud.</li>
+          <li><strong>Find every door and window.</strong> The Features tab lists everything the system does, what starts it and what it changes or reaches, and the owner marks what they asked for. One stands out: a job that runs every night and has an AI model write to members who have not booked in a month. Nobody asked for it.</li>
+          <li><strong>Check the plumbing and wiring.</strong> Each step and part shows the data it handles, the errors it can raise, and which tests check it. With Cloud on, the cloud resources sit above the parts that use them, and the questions for the inspection BigBrain finds there (an email function anyone on the internet can call) are listed to decide.</li>
+          <li><strong>Note what is good and what needs fixing.</strong> A comment records something worth knowing. A To Do records work to do, with a priority: Must do, Should do or Nice to have. The owner's first is a Must do: make sure nobody pays for a class without a place.</li>
+          <li><strong>With an expert at your side.</strong> The agent pane sends your question, together with what you are looking at, to your own coding agent. It reads the code and answers on the spot, with a one-line takeaway and the places in the code it relied on: "What happens if the payment fails halfway?" What should I ask? proposes the questions worth asking about the step on screen.</li>
+          <li><strong>Bring in others.</strong> An inspection records who looked at what, so the map shows what nobody has reached yet. People on the team share the library; a specialist outside it, such as the payments consultant the owner trusts, gets one file with just the scenario, or just what changed, and sends it back with their notes.</li>
+        </ul>
+        <p>Depth is on demand. Scenarios and design come first, in plain words. The Summary and Detailed switch adds the technical explanation, files and code references when you want them. You go inside a part when a question needs it, and you ask the agent about an algorithm when the scenario is not enough. Nobody has to read code to take part; anybody who wants to can get to it in two clicks. For the person who is new to the system, Jobs groups the parts into what they do together, in plain words; Screens lists the app the way its owner knows it; a glossary explains each technical word for this system; What if plays what happens when a step goes wrong; and the Readiness card says what to look at next.</p>
+        <h3>Behind the map</h3>
+        <ul>
+          <li><strong>Your agent builds it.</strong> BigBrain has no AI of its own. It runs the coding agent you already have, Claude Code or GitHub Copilot, with tools that let it read the code and hand back what it found. How long a map takes depends on how large and complex the system is. It is built in stages, so you can walk the map while its scenarios and features are added. A question costs about what one agent run costs.</li>
+          <li><strong>Everything lives in a library, never in the project.</strong> The map, the scenarios, the answers, the notes and the inspections are files in a library folder of their own. BigBrain never writes into the project it maps, so it cannot change what that project ships.</li>
+          <li><strong>The map stays current from committed code.</strong> When new commits land, BigBrain says so, and Bring the Map Up to Date reads what changed and shows the difference.</li>
+          <li><strong>Fixes go to your own coding agent.</strong> Fix Now prepares a prompt for a To Do and opens it in your agent. You approve every change there, in your own project, as you always do.</li>
+          <li><strong>Everything cites the code.</strong> Each fact, step and answer points at the files and lines it came from, and BigBrain checks that every citation resolves before it keeps it. Text that is not backed by the code is not kept.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="alt article">
+      <div class="wrap">
+        <div class="section-label">Key scenarios</div>
+        <h2>What it looks like in use.</h2>
+        <p>The stories follow the studio from the demo: its owner, a teammate who runs the front desk, a payments consultant from outside the team, and a developer the studio hires.</p>
+        <div class="story">
+          <h3>An owner who does not read code reviews what the agent built</h3>
+          <p>The owner built the studio's booking app with Claude Code. Members book classes and pay through it, and it has worked for months. The owner has never read its code and could not say what is in it. They open the map in Summary mode and see the pieces they know, the app, the backend, the payment service, the database, and one they do not: a part that runs every night. They ask the agent what it is. It is a job that emails members who have not booked in a month, something the agent added while building sign-up reminders and nobody asked for. It is their door from the garage: no amount of testing would have found it, because nobody knew to look. They leave a Must do To Do to remove it. Then they play Book a class, hear each step read aloud, what is sent, what comes back, what can go wrong, and ask "what happens if the payment fails halfway?" The answer is in plain words with the code it rests on. They have reviewed their application without reading a line of it.</p>
+          <p>You can walk this review yourself: the app ships with the studio's system as its demo. In the Features tab every feature is approved but one, the nightly emails to quiet members. Show it on the map, ask the agent what the part that runs every night is, mark it not approved and see the Must do To Do appear. Play Book a class, ask what happens if the payment fails halfway, and turn on Cloud to see the same booking pass through the system's two clouds. The demo needs no AI agent and no cloud account: its answers were saved with it, and its cloud is made up. Play the Tour walks through all of it with a voice and a pointer that clicks for you.</p>
+        </div>
+        <div class="story">
+          <h3>Three people inspect the first release</h3>
+          <p>Before release 1.0 goes out, the owner starts an inspection called Release 1.0 walkthrough and shares the library through a private source repository. The teammate joins from their own Mac. Each walks the parts they know best, plays scenarios, asks questions and leaves To Do's. The Coverage view colors the map by who has looked at what, and shows the parts nobody has reached yet. When a part is done, whoever checked it clicks Mark Inspected. Close Inspection writes a report: who took part, what was covered and what was not, how the code moved during the inspection, and the To Do's grouped Must do, Should do, Nice to have.</p>
+        </div>
+        <div class="story">
+          <h3>A second release inspects only what changed</h3>
+          <p>Each inspection keeps a snapshot of the map it inspected. When release 2.0 is ready, the owner starts Release 2.0 walkthrough and chooses to inspect what changed since the 1.0 walkthrough. BigBrain compares the two maps: the new waiting list and gift cards are green, the parts whose job or connections changed are amber. Coverage fades everything that did not change, so the owner and the teammate each take the changes they know best, and the sidebar lists the changes nobody has reached. The consultant, outside the team, is sent one file with just what changed; what they look at counts in the inspection when the owner brings the file back. The report says, change by change, who looked at it.</p>
+        </div>
+        <div class="story">
+          <h3>An inspector checks the testing</h3>
+          <p>The owner wants to know whether taking the payment is tested. They ask BigBrain to Find the Tests; the agent reads the test code and records the test suites and cases. The Tests checkbox colors the map by where tests exist. In Book a class, each step shows which tests check it, what each test checks, and how and when the tests run; Detailed adds the test's name, file and the command that runs it. The step that refunds the card when the booking cannot be saved has no test. The owner leaves a Must do To Do: add one. The inspection report includes testing.</p>
+        </div>
+        <div class="story">
+          <h3>A specialist inspects one scenario</h3>
+          <p>The owner wants the payments consultant, who works with the payment service every day, to look at Book a class before launch. The consultant is not on the team, has no access to the code and has never used the project's repositories. The owner selects the scenario and chooses Send to a Specialist. BigBrain asks whether to send the comments and To Do's with it or just the scenario, and saves one file: the scenario and the part of the map it walks through, with no source code in it. The owner emails it.</p>
+          <p>The consultant opens the file in BigBrain and chooses Inspect It. The scenario plays for them as it does for the owner, step by step and read aloud, and they can go inside the parts it passes through. They read the owner's comment on the step that saves the booking, add their own on how the payment service can send the same payment event twice, leave a To Do, and in the agent pane write "what if the save fails and the refund fails too?" They have no agent of the owner's to ask, so the question is saved in the file for the owner instead. Their notes are saved into the same file as they go, and they send it back.</p>
+          <p>The owner opens the returned file. Nothing goes into the map until they say so: they accept the consultant's To Do and comment, and click Ask the Agent on the question, which the agent answers with the step the consultant was looking at as context. A specialist from outside the team has inspected part of the system, and their report is now part of the map. For people who only need to watch, Record as a Movie plays the scenario with the voice on and saves a movie of the map and the step panel that plays on Mac and Windows.</p>
+        </div>
+        <div class="story">
+          <h3>Understanding a change</h3>
+          <p>A fix for the double charge has been committed. The sidebar says the code has moved on; the owner clicks Bring the Map Up to Date. The agent reads only what changed, and the map shows the difference: green for added, red for removed, amber for changed. Explain a change says in plain words what changed, what is affected, and what to test again. The owner knows what to retest without reading the diff.</p>
+        </div>
+        <div class="story">
+          <h3>Onboarding a developer</h3>
+          <p>The developer is new to the project. Instead of a tour from someone busy, they open the map in Detailed mode, play Cancel a booking to see when a refund is made, and go inside the booking part to see its files and functions. The comments other people left are there, with their names. When something is unclear, they ask the agent, and the answer points to the exact code. Snapshots let them compare the map with how it looked at the last release.</p>
+        </div>
+        <div class="story">
+          <h3>Finding a risk and deciding on it</h3>
+          <p>The owner asks "can anyone send emails in the studio's name?" The answer includes a finding: a problem with a severity, the attack that would exploit it (the function that sends emails can be called by anyone who knows its address), the fix in plain words, and how to prove the fix worked. A beacon marks the parts it touches. The owner can approve the fix, defer it, or accept the risk, and the decision is recorded. When the fix lands in the code, the finding's status follows it, and a resolved finding leaves the map but stays in the file.</p>
+        </div>
+        <div class="story">
+          <h3>Closing the loop</h3>
+          <p>After the inspection, the owner opens Review To Do's, ticks the ones to do now and clicks Fix N Marked. BigBrain prepares one prompt, most pressing first, and opens it in the coding agent, Claude Code or GitHub Copilot, in the project. The owner approves each change there and commits. Back in BigBrain, Bring the Map Up to Date reads the new code and marks the fixed To Do's done. The inspection's To Do's went from a note someone left to committed code without anybody copying anything by hand.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="article">
+      <div class="wrap">
+        <div class="section-label">What makes it different</div>
+        <h2>The code is still there when you want it. It is the last step, not the first.</h2>
+        <ul>
+          <li><strong>Compared with diff-based code review.</strong> A diff shows lines. BigBrain shows the system, the scenarios the change touches, what else is affected and what to retest. The code is still there when you want it, but it is the last step, not the first.</li>
+          <li><strong>Compared with an architecture diagram.</strong> A diagram is drawn once and goes stale. BigBrain's map is built from the code, updated from the commits, and every part cites the files it stands for. It can be walked, questioned and annotated, and it remembers what it has been asked.</li>
+          <li><strong>Compared with chatting with an AI about code.</strong> A chat has no shared picture: each question starts from nothing, and the answer lives in a scrolling window. In BigBrain the question carries what you are looking at, the answer is kept on the part it is about, with its citations, and the next question starts from what is known. Three people in an inspection see the same map and each other's notes.</li>
+        </ul>
+        <p>In each case the human stays in charge of the design. The agent explains and proposes; people decide what is good, what must change and how urgently, and they approve every fix in their own tools.</p>
+      </div>
+    </section>
+
+    <section class="alt article">
+      <div class="wrap">
+        <div class="section-label">In short</div>
+        <h2>AI can write more code than people can read. BigBrain does not ask people to read it.</h2>
+        <p>It gives them a view of the whole system: a map to walk, scenarios to follow, tests to check, an expert to ask, and a place to say what is good and what needs to change. Two things come of that. The owner can say the system does what they asked for and nothing else, with the promises it must keep checked against the code. And a person who has never written code can understand the system they own, while the developer and the specialist walk the same map at the depth their work needs. That is what a review was always for.</p>
+        <p>To try it, open the app: the start window offers three demos of the studio, in the order they happen, each with a narrated tour: setting up a new system, inspecting a system, and inspecting a new release. Nothing you do in a demo is kept, and none needs an AI agent. When you want to see your own system, install Claude Code or GitHub Copilot, choose it in Settings, and click New System.</p>
+        <p><a class="back" href="bigbrain-visualizer.html">Back to the product page</a></p>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2026 BigBrainCorp LLC &middot; <a href="index.html">Home</a> &middot; <a href="products.html">Products</a> &middot; <a href="https://ossscan.com" target="_blank" rel="noreferrer">OSSScan</a> &middot; <a href="https://www.toomanycomics.app" target="_blank" rel="noreferrer">Too Many Comics</a> &middot; <a href="bigbrain-visualizer.html">BigBrain Visualizer</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="security.html">Security</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
