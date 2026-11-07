@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security Policy | BigBrainCorp</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="description" content="How BigBrain System Visualizer and its license service protect you: signed and notarized builds, TLS, secrets in Key Vault, seats checked by signature on your Mac, and no code leaving your Mac. How to report a vulnerability." />
+  <link rel="canonical" href="https://bigbraincorp.com/security.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Security Policy | BigBrainCorp" />
+  <meta property="og:description" content="How BigBrain System Visualizer and its license service protect you: signed and notarized builds, TLS, secrets in Key Vault, seats checked by signature on your Mac, and no code leaving your Mac. How to report a vulnerability." />
+  <meta property="og:url" content="https://bigbraincorp.com/security.html" />
+  <meta property="og:image" content="https://bigbraincorp.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="BigBrainCorp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Security Policy | BigBrainCorp" />
+  <meta name="twitter:description" content="How BigBrain System Visualizer and its license service protect you: signed and notarized builds, TLS, secrets in Key Vault, seats checked by signature on your Mac, and no code leaving your Mac. How to report a vulnerability." />
+  <meta name="twitter:image" content="https://bigbraincorp.com/og-image.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: #111;
+      background: #f4f6f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, #0b1a3d 0%, #0d2460 60%, #0e2d7a 100%);
+      border-bottom: 2px solid #4ab3f4;
+      padding: 0 24px;
+    }
+    .site-header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 64px;
+    }
+    .site-header img.logo {
+      height: 44px;
+      width: 44px;
+      border-radius: 10px;
+      object-fit: contain;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px #4ab3f4, 0 0 10px rgba(74,179,244,.4);
+    }
+    .site-header-wordmark { display: flex; flex-direction: column; line-height: 1.1; }
+    .site-header-wordmark .brand-name { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+    .site-header-wordmark .brand-tagline { font-size: 11px; color: #4ab3f4; letter-spacing: 0.06em; text-transform: uppercase; }
+    .header-nav { margin-left: auto; display: flex; gap: 18px; align-items: center; }
+    .header-nav a { color: #a8c8ea; text-decoration: none; font-size: 13px; font-weight: 500; transition: color .15s; }
+    .header-nav a:hover { color: #fff; }
+    .header-nav .btn-nav { background: #4ab3f4; color: #0b1a3d; padding: 7px 16px; border-radius: 6px; font-weight: 700; font-size: 13px; }
+    .header-nav .btn-nav:hover { background: #6cc6f8; }
+
+    .page-body { flex: 1; padding: 40px 24px 60px; }
+    .wrap { max-width: 760px; margin: 0 auto; }
+    .doc-header { background: #fff; border: 1px solid #d0d9e8; border-radius: 12px; padding: 24px 28px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(11,26,61,.06); }
+    .doc-header h1 { font-size: 24px; font-weight: 800; color: #0b1a3d; margin: 0 0 8px; }
+    .doc-meta { font-size: 13px; color: #667; line-height: 1.6; }
+    .doc-meta strong { color: #445; }
+
+    .doc-section { background: #fff; border: 1px solid #d0d9e8; border-radius: 12px; padding: 24px 28px; margin-bottom: 16px; box-shadow: 0 2px 6px rgba(11,26,61,.04); }
+    .doc-section h2 { font-size: 16px; font-weight: 700; color: #0b1a3d; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid #e8eef7; }
+    .doc-section h3 { font-size: 14px; font-weight: 700; color: #0b1a3d; margin: 16px 0 8px; }
+    .doc-section p { font-size: 14px; color: #334; line-height: 1.7; margin: 0 0 12px; }
+    .doc-section p:last-child { margin-bottom: 0; }
+    .doc-section ul, .doc-section ol { font-size: 14px; color: #334; line-height: 1.7; margin: 0 0 12px; padding-left: 20px; }
+    .doc-section li { margin-bottom: 4px; }
+    .doc-section strong { color: #0b1a3d; }
+    .doc-section a { color: #1056b8; }
+    .doc-section code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: #f0f4fa; padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+
+    .site-footer {
+      background: #0b1a3d;
+      border-top: 1px solid #1e3a6e;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .site-footer p { margin: 0; font-size: 12px; color: #6e8db5; line-height: 1.6; }
+    .site-footer a { color: #4ab3f4; text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* ── Mobile ──
+       The header packs the logo, tagline, and full nav into one fixed-height,
+       non-wrapping row. On a phone that overflows the viewport and scrolls
+       sideways. Unlike OSSScan (which repeats its links in a secondary nav),
+       this header is the site's only navigation, so the links must wrap onto
+       their own row rather than be hidden. Must stay last to win on source order. */
+    @media (max-width: 640px) {
+      .site-header { padding: 0 16px; }
+      .site-header-inner { height: auto; flex-wrap: wrap; padding: 12px 0; gap: 12px; }
+      .site-header-wordmark .brand-tagline { display: none; }
+      .header-nav { margin-left: 0; width: 100%; flex-wrap: wrap; gap: 12px 18px; }
+      .page-body { padding: 28px 16px 44px; }
+      .doc-header, .doc-section { padding: 20px 18px; }
+    }
+
+    /* Very narrow: original iPhone SE and phones with Display Zoom enabled
+       (a 390pt device rendered at a 320px CSS viewport). Inert at 375px and up. */
+    @media (max-width: 374px) {
+      .site-header { padding: 0 12px; }
+      .header-nav { gap: 10px 14px; }
+      .header-nav a:not(.btn-nav) { font-size: 12px; }
+      .doc-section a, .doc-meta a { overflow-wrap: anywhere; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <img class="logo" src="BigBrainCorpIcon.png" alt="BigBrainCorp icon" />
+      <div class="site-header-wordmark">
+        <span class="brand-name">BigBrainCorp</span>
+        <span class="brand-tagline">Deep Understanding. Elegant Simplicity. Amplified by AI.</span>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="https://ossscan.com" target="_blank" rel="noreferrer">OSSScan</a>
+        <a href="https://www.toomanycomics.app" target="_blank" rel="noreferrer">Too Many Comics</a>
+        <a href="https://ossscan.com" target="_blank" rel="noreferrer" class="btn-nav">Visit OSSScan</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-body">
+    <div class="wrap">
+
+      <div class="doc-header">
+        <h1>Security Policy</h1>
+        <div class="doc-meta">
+          <strong>Vendor:</strong> BigBrainCorp LLC &nbsp;&middot;&nbsp;
+          <strong>Product:</strong> BigBrain System Visualizer &nbsp;&middot;&nbsp;
+          <strong>Contact:</strong> <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2>What the App Can Reach</h2>
+        <p>BigBrain System Visualizer, BigBrain Visualizer for short, runs on your Mac with a small and explicit footprint:</p>
+        <ul>
+          <li><strong>Reads</strong> the checkouts you point it at, through the coding agent you already have installed, Claude Code or GitHub Copilot, which runs under your own account with its provider.</li>
+          <li><strong>Writes</strong> the map and everything you add to it into a folder on your Mac, and the files you choose to export where you choose to put them.</li>
+          <li><strong>Talks to one server of ours</strong>, the license service, about your account, your seat and your Mac, and to our download storage for updates. Nothing else.</li>
+          <li><strong>Does not read</strong> your clipboard, keychain, browser data or files outside the folders you choose, and does not need administrator rights.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>What Leaves Your Mac</h2>
+        <p>Your code does not. Nor does the map, a scenario, a comment, a To Do or a note. The license service has no field for any of them: each request the app can make is a short message about your account, your seat or your Mac, every request body is capped at a few kilobytes, and a request with a field the service does not expect is refused outright. Files you send to a specialist go from you to them, by whatever means you choose, and never through us.</p>
+        <p>What the app does send us, over TLS, is listed in full in the <a href="privacy.html#visualizer">Privacy Policy</a>: a signed token naming your verified email when you sign in, a device hash and an optional name for your Mac when you activate, and the refreshes that keep your seat current. The coding agent you use sends what it reads to its own provider, under your account and that provider's terms; we do not see that traffic and receive nothing from it.</p>
+        <p>The app sends us no telemetry or analytics.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Signing In Without a Password</h2>
+        <p>You sign in with Apple, Google or Microsoft at a hosted identity service, Microsoft Entra External ID. The app is a native Mac app and holds no secret of its own: it uses the standard authorization code flow with PKCE, and the identity service hands it a signed token naming your verified email address. The license service checks that token against the one issuer it trusts and requires the email to be marked verified. No password passes through the app or our service, and we hold no credentials for any provider. The session the service then gives the app is kept by the service only as a hash, so a copy of our records could not be used to sign in as you.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Seats Checked by Signature on Your Mac</h2>
+        <p>When you activate, the license service gives the app a signed entitlement: a short document naming your account, your seat, the device hash of your Mac and an end date, signed with an Ed25519 key. The app checks the signature with the matching public key built into it, and checks that the device hash is this Mac's, before it lets you build. That check happens on your Mac and needs no network. The entitlement is good for 30 days, or until what backs the seat ends if that is sooner, and the app refreshes it from the service after a day so a seat that has moved or ended is noticed quickly.</p>
+        <p>The private signing key lives in Azure Key Vault and is read by the service at run time; it is never on your Mac, on this site, or in the app. The Stripe keys, the operator key and the beta code live in the same vault.</p>
+        <p>The device hash is a one-way SHA-256 hash of stable hardware identifiers, made on your Mac. Given the hash, the identifiers cannot be recovered, so it cannot identify you or locate your Mac. It exists so one seat can be on one Mac at a time.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>The Service</h2>
+        <ul>
+          <li><strong>TLS everywhere.</strong> The app, the download listing on the product page, and Stripe's calls all reach the service through an API gateway over HTTPS only. There is no plain HTTP address.</li>
+          <li><strong>Strict requests.</strong> Every request body is parsed against a fixed shape; unknown fields and oversize bodies are refused. Requests are rate limited.</li>
+          <li><strong>Secrets in Key Vault.</strong> The signing key, storage credentials, Stripe keys, the operator key and the beta code are Key Vault references, not settings typed into the service.</li>
+          <li><strong>An audit trail.</strong> Every sign-in, activation, refusal, beta license, free access grant and payment event is recorded, so a question about an account can be answered and a seat moving in an odd pattern can be looked at by a person.</li>
+          <li><strong>Downloads apart from records.</strong> The builds are served from storage that holds nothing else and can be read only by address, never listed. Your records are not in it.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>How to Verify the App Is Genuine</h2>
+        <p>Every build is <strong>code-signed with an Apple Developer ID</strong> and <strong>notarized by Apple</strong>. Gatekeeper checks the app when you first open it; if macOS opened it without a warning, it has already confirmed the app came from BigBrainCorp LLC and has not been changed since it was signed. To check by hand, in Terminal:</p>
+        <p><code>spctl --assess --type exec --verbose "/Applications/BigBrain System Visualizer.app"</code></p>
+        <p>A genuine build returns <code>accepted source=Notarized Developer ID</code>. If you see a warning that the developer cannot be verified, do not open the app and write to <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a>.</p>
+        <p>The download listing shows each build's SHA-256 as a second check. Compare it with the output of <code>shasum -a 256</code> on the zip you downloaded. Updates arrive through the app's built-in updater over HTTPS, and each update is signed and notarized like the first download.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Official Site</h2>
+        <p>BigBrain Visualizer is distributed only from <strong>bigbraincorp.com</strong> and the Mac App Store listings for its free viewers. Any other site offering the app should be treated as a copy you did not ask for. Check that your browser's address bar shows <code>https://bigbraincorp.com</code> with a valid padlock, that the download passes the signature check above, and that its SHA-256 matches the listing. To report a site or message pretending to be BigBrainCorp, write to <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a>.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Honest Limitations</h2>
+        <ul>
+          <li><strong>The coding agent is not ours.</strong> What Claude Code or GitHub Copilot reads and sends is governed by that tool and its provider. Use the app only with code you are allowed to have read that way, and set the agent's own permissions as you would for any other use.</li>
+          <li><strong>A seat that has moved may keep working for a day.</strong> The app refreshes its entitlement after a day, so a Mac that lost its seat can keep building until its next refresh.</li>
+          <li><strong>The beta code is a gate on the listing, not on the files.</strong> The builds are public files once their addresses are known. The code keeps the addresses off the product page; it does not keep them from someone who already has one.</li>
+          <li><strong>Seat movement is flagged, not blocked.</strong> A seat moving many times a day is marked in the audit log for a person to look at, never refused automatically.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h2>Reporting a Vulnerability</h2>
+        <p>If you find a security problem in the app, a viewer, the license service or this site, write to <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a> with "Security" in the subject. Please include what you found, how to reproduce it, and the build or address involved. We acknowledge reports within 2 business days, keep you informed as we work on a fix, and credit you if you would like. Please give us a reasonable time to fix a problem before making it public, and do not test against other people's accounts or data.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2026 BigBrainCorp LLC &nbsp;&middot;&nbsp;
+      <a href="index.html">bigbraincorp.com</a>
+    </p>
+    <p style="margin-top:6px;">
+      OSSScan &nbsp;&middot;&nbsp;
+      <a href="mailto:jim@ossscan.com">jim@ossscan.com</a> &nbsp;&middot;&nbsp;
+      <a href="https://ossscan.com" target="_blank" rel="noreferrer">ossscan.com</a>
+    </p>
+    <p style="margin-top:6px;">
+      Too Many Comics &nbsp;&middot;&nbsp;
+      <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a> &nbsp;&middot;&nbsp;
+      <a href="https://www.toomanycomics.app" target="_blank" rel="noreferrer">toomanycomics.app</a>
+    </p>
+    <p style="margin-top:6px;">
+      BigBrain Visualizer &nbsp;&middot;&nbsp;
+      <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a>
+    </p>
+    <p style="margin-top:6px;">
+      <a href="privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp;
+      <a href="terms.html">Terms of Use</a> &nbsp;&middot;&nbsp;
+      <a href="security.html">Security Policy</a>
+    </p>
+  </footer>
+</body>
+</html>
