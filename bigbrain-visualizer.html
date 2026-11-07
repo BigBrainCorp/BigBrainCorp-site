@@ -210,6 +210,9 @@
     .download .button { align-self: flex-start; }
     .download-version { font-size: 13px; color: #667; margin: 0; min-height: 1.5em; }
     .note { font-size: 14px; color: #556; }
+    /* Loading and error states of the download listing */
+    .status { font-size: 14px; color: #667; margin: 0 0 16px; }
+    .status.err { color: #b00020; }
 
     /* Viewers and links */
     .rows { border: 1px solid #d0d9e8; border-radius: 12px; overflow: hidden; margin-top: 8px; }
@@ -358,6 +361,8 @@
         <div class="section-label">Download</div>
         <h2>Free to download. The demos run with no sign-in.</h2>
         <p>Pick the build for your Mac. Apple silicon is any Mac with an M series chip; Intel is any Mac from before. Unzip the file and drag the app to Applications. Each build is signed and notarized, and the app updates itself from then on.</p>
+        <p id="downloads-loading" class="status">Checking the downloads&hellip;</p>
+        <p id="downloads-error" class="status err" hidden>The downloads are not available right now. Try again in a few minutes, or write to <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a>.</p>
         <form id="beta-code" hidden style="margin:0 0 16px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
           <label for="beta-code-input" style="font-weight:600;">Beta code</label>
           <input id="beta-code-input" type="text" autocomplete="off" spellcheck="false" style="padding:8px 10px; min-width:220px; border-radius:8px; border:1px solid #4ab3f4; background:transparent; color:inherit;" />
@@ -365,6 +370,7 @@
           <p id="beta-code-note" class="note" style="flex-basis:100%; margin:0;"></p>
           <p class="note" style="flex-basis:100%; margin:0;">Need a code? Write to <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a> and say which Mac you will use it on.</p>
         </form>
+        <div id="downloads-content" hidden>
         <div class="downloads" id="downloads">
           <div class="download" data-arch="arm64">
             <p class="download-tag" data-role="tag"></p>
@@ -383,6 +389,7 @@
         </div>
         <p class="note"><strong>Requirements.</strong> BigBrain Visualizer is a Mac app only, for macOS 15 or later. To build a system of your own it needs a coding agent, Claude Code or GitHub Copilot, installed and signed in on the Mac. The demos and sent files need neither an agent nor an account.</p>
         <p class="note">Not sure which Mac you have? Choose About This Mac from the Apple menu: a chip beginning with M is Apple silicon, and a processor from Intel is Intel.</p>
+        </div>
       </div>
     </section>
 
@@ -448,18 +455,22 @@
   // runs on the gateway's Azure name; the custom domain comes with the public
   // release (the service repo's TODO.md), and this is the one value to change.
   // The page calls GET /downloads, which gives each build's public address,
-  // size, SHA-256 and release date; the buttons point at those addresses once
-  // it answers, and at GET /downloads/arm64 and /downloads/x86_64 until then.
-  // While the beta runs, GET /downloads asks for the beta code (403
-  // beta_code_needed); the page then shows a code box and sends the code in
-  // the X-Beta-Code header.
+  // size, SHA-256 and release date. The download cards stay hidden behind a
+  // "Checking the downloads" line until it answers: with the listing, the
+  // cards and the notes under them appear with the real addresses filled in;
+  // with 403 beta_code_needed (the beta is on), only the beta code box appears,
+  // and the code is sent again in the X-Beta-Code header; with no answer or
+  // another error, one line says the downloads are not available right now.
+  // The service allows only the site's own origin, so from a local file every
+  // call fails and the error line is what shows; the states are checked for
+  // real once the page is published.
   const LICENSE_SERVICE_BASE_URL = 'https://bbsystemvisualizer-apim.azure-api.net/bigbrain';
 
   const MANIFEST_URL = `${LICENSE_SERVICE_BASE_URL}/downloads`;
   const ARCHITECTURES = ['arm64', 'x86_64'];
 
-  // Point each button at its download call. This runs before any network call,
-  // so the buttons work the same whether or not the service answers.
+  // Point each button at its download call, in case the listing names no
+  // address for a build. The cards show only once the listing has arrived.
   for (const card of document.querySelectorAll('.download[data-arch]')) {
     card.querySelector('[data-role="link"]').href = `${LICENSE_SERVICE_BASE_URL}/downloads/${card.dataset.arch}`;
   }
@@ -522,23 +533,25 @@
     return { line: parts.join(', '), url: perArch.url || '' };
   }
 
-  // The beta code box: shown when the listing asks for a code, hidden otherwise.
+  // The four states of the listing: checking, the beta code box, the
+  // downloads, and not available. Exactly one shows at a time.
+  const loadingLine = document.getElementById('downloads-loading');
+  const errorLine = document.getElementById('downloads-error');
+  const content = document.getElementById('downloads-content');
   const betaBox = document.getElementById('beta-code');
   const betaInput = document.getElementById('beta-code-input');
   const betaNote = document.getElementById('beta-code-note');
-  function showBetaBox(message) {
-    if (!betaBox) return;
-    betaBox.hidden = false;
-    for (const card of document.querySelectorAll('.download[data-arch]')) card.querySelector('[data-role="link"]').hidden = true;
-    if (betaNote) betaNote.textContent = message || '';
-  }
-  function hideBetaBox() {
-    if (betaBox) betaBox.hidden = true;
-    for (const card of document.querySelectorAll('.download[data-arch]')) card.querySelector('[data-role="link"]').hidden = false;
+  function show(state, message) {
+    loadingLine.hidden = state !== 'checking';
+    errorLine.hidden = state !== 'error';
+    content.hidden = state !== 'downloads';
+    betaBox.hidden = state !== 'code';
+    if (state === 'code' && betaNote) betaNote.textContent = message || '';
   }
 
   async function fillVersions(betaCode) {
     let manifest;
+    if (betaCode && betaNote) betaNote.textContent = 'Checking the code\u2026';
     try {
       const headers = { 'Accept': 'application/json' };
       if (betaCode) headers['X-Beta-Code'] = betaCode;
@@ -547,18 +560,18 @@
         let body = {};
         try { body = await resp.json(); } catch (err) { /* no body */ }
         if (body.error === 'beta_code_needed' || body.error === 'beta_code_wrong') {
-          showBetaBox(betaCode ? (body.reason || 'That code is not right.') : 'BigBrain is in a closed beta. Enter the code you were given to download it.');
+          show('code', betaCode ? (body.reason || 'That code is not right.') : 'BigBrain is in a closed beta. Enter the code you were given to download it.');
           return;
         }
       }
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       manifest = await resp.json();
     } catch (err) {
-      // The service is not answering. The buttons stay as they are and the
-      // version lines stay empty.
+      // The service is not answering, or answered with something other than
+      // the listing. Nothing is offered that would not work.
+      show('error');
       return;
     }
-    hideBetaBox();
     for (const arch of ARCHITECTURES) {
       const card = document.querySelector(`.download[data-arch="${arch}"]`);
       if (!card) continue;
@@ -566,6 +579,7 @@
       card.querySelector('[data-role="version"]').textContent = d.line;
       if (d.url) card.querySelector('[data-role="link"]').href = d.url;
     }
+    show('downloads');
   }
 
   if (betaBox) {
