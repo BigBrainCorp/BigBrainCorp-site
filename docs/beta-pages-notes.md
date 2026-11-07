@@ -104,3 +104,11 @@ What differs, because the Visualizer sells seats and signs people in:
   Check the installed app's bundle name matches before pushing.
 - The product page's Why section is drawn from the app repository's design document
   `docs/00-why-bigbrain.md`, cut to the site's plain style, with no names from its demo.
+- The product page follows the shape of the other two products' home pages: a headline in
+  the visitor's words, the problem, why a design review rather than a code review, top
+  reasons as cards, how it works as numbered steps, the scenarios as stories, what makes it
+  different, a privacy promise grid, free and paid with the plan shapes and no prices, the
+  download section with its four states, the viewers, and the guide and policies. The card,
+  step and grid patterns are copied from the other product's home page styles; none of its
+  sentences are. Two elements of that model have no source for this product and were left
+  out: a "we needed this ourselves" passage and a "questions behind the tool" blog list.

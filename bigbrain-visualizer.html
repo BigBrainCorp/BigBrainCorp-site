@@ -138,22 +138,100 @@
     }
     .button:hover { background: #0b4a9d; }
 
-    /* Why: three short cases */
-    .cases {
+    .section-intro { font-size: 16px; color: #556; line-height: 1.6; margin: -4px 0 24px; max-width: 640px; }
+
+    /* Top reasons: cards, as on the other products' home pages */
+    .reasons {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 14px;
-      margin: 8px 0 24px;
+      gap: 18px;
     }
-    @media (min-width: 700px) { .cases { grid-template-columns: 1fr 1fr 1fr; } }
-    .case {
+    @media (min-width: 640px) { .reasons { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .reasons { grid-template-columns: 1fr 1fr 1fr; } }
+    .reason {
+      border: 1px solid #d0d9e8;
+      border-radius: 12px;
+      padding: 22px 20px;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(11,26,61,.05);
+    }
+    .reason h3 { font-size: 15px; font-weight: 700; color: #0b1a3d; margin: 0 0 8px; }
+    .reason p { font-size: 14px; color: #556; line-height: 1.6; margin: 0; }
+
+    /* How it works: numbered steps in a row */
+    .flow-steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      position: relative;
+      margin-top: 8px;
+    }
+    @media (min-width: 700px) { .flow-steps { grid-template-columns: 1fr 1fr 1fr 1fr 1fr; } }
+    .flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px 20px 24px 0;
+      position: relative;
+    }
+    @media (min-width: 700px) {
+      .flow-step { padding: 24px 24px; }
+      .flow-step:not(:last-child)::after {
+        content: '\2192';
+        position: absolute;
+        right: -10px;
+        top: 32px;
+        font-size: 20px;
+        color: #4ab3f4;
+        font-weight: 700;
+      }
+    }
+    .flow-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0d2460;
+      color: #4ab3f4;
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+    .flow-step h3 { font-size: 15px; font-weight: 700; color: #0b1a3d; margin: 0 0 8px; }
+    .flow-step p { font-size: 13px; color: #556; line-height: 1.55; margin: 0; }
+
+    /* Stories: a case each, with a label */
+    .stories { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 8px; }
+    .story {
       border: 1px solid #d0d9e8;
       border-radius: 12px;
       background: #fff;
-      padding: 20px 22px;
+      padding: 24px 26px;
     }
-    .case h3 { font-size: 16px; margin: 0 0 8px; }
-    .case p { font-size: 14px; color: #556; line-height: 1.6; margin: 0; }
+    .story-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4ab3f4; margin: 0 0 6px; }
+    .story h3 { font-size: 18px; margin: 0 0 10px; }
+    .story p { font-size: 15px; color: #445; line-height: 1.65; margin: 0; }
+
+    /* Privacy promise: a grid of short items */
+    .promise-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 8px;
+    }
+    @media (min-width: 640px) { .promise-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .promise-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .promise {
+      border: 1px solid #d0d9e8;
+      border-radius: 10px;
+      padding: 20px;
+      background: #f4f6f9;
+    }
+    .promise h3 { font-size: 14px; font-weight: 700; color: #0b1a3d; margin: 0 0 8px; }
+    .promise p { font-size: 13px; color: #556; line-height: 1.55; margin: 0; }
 
     /* Free and paid, side by side */
     .sides {
@@ -327,9 +405,9 @@
         <div class="hero-eyebrow">Products</div>
         <div style="display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:16px; flex-wrap:wrap;">
           <img src="BigBrainVisualizer.png" alt="BigBrain Visualizer icon" style="height:72px; width:72px; border-radius:16px; object-fit:contain; box-shadow:0 0 0 2px #4ab3f4, 0 0 16px rgba(74,179,244,.35);" />
-          <h1 style="margin:0;">BigBrain System Visualizer</h1>
+          <h1 style="margin:0;">Your agent wrote more code than you can read.<br />Walk what it built instead.</h1>
         </div>
-        <p class="hero-sub">A Mac app that shows a software system as a map anyone can walk, built and kept current by your own coding agent. The demos, the viewers, and inspecting a file someone sent you are free. A system of your own is a subscription; the demo shows every feature before you decide.</p>
+        <p class="hero-sub">BigBrain System Visualizer is a Mac app that shows a software system as a map anyone can walk, built and kept current by your own coding agent. The demos, the viewers, and inspecting a file someone sent you are free. A system of your own is a subscription; the demo shows every feature before you decide.</p>
         <div class="hero-actions">
           <a href="#download">Download for Mac</a>
         </div>
@@ -338,10 +416,11 @@
 
     <section>
       <div class="wrap">
-        <div class="section-label">What it is</div>
-        <h2>Your system, as a map a non-programmer can walk.</h2>
-        <p>BigBrain System Visualizer, BigBrain Visualizer for short, shows a software system as a 3D map: its parts, the connections between them, and the scenarios that run through them, laid out so that someone who does not read code can follow what the system does. Your own coding agent, Claude Code or GitHub Copilot, reads the code, builds the map, answers questions about it, and keeps it current as the code changes. Nothing is sent to us: the code stays in your checkouts, the agent runs under your own account, and everything BigBrain learns is kept in a folder on your Mac.</p>
-        <p>An inspection lets a group walk the system together, leave comments and To Do's on the map, mark what they have checked, and close with a report. A specialist outside the team is sent a file instead: they open it for free, walk it, play its scenarios with narration, and send their notes back. The free headset viewer opens the same file on Apple Vision Pro, so a system can be walked in a room rather than on a screen.</p>
+        <div class="section-label">The problem</div>
+        <h2>Software that works, more or less, and that nobody can honestly say they have reviewed.</h2>
+        <p>An AI coding agent can write ten thousand lines of code to add a feature in an afternoon, and the next feature the next day. No person can read that much, and the usual code review, where someone reads the lines that changed and says whether they look right, stops being possible.</p>
+        <p>Reading the lines would not find the problems anyway. Code an agent writes is clean on its surface: it compiles, it is tidy, it looks right. The mistakes that matter are mismatches between what the code does and what the system was meant to do: a step skipped, a rule applied in the wrong place, a part that depends on something it should not, a failure nobody handles. Those are questions about the design, and code is a poor place to answer them.</p>
+        <p>Picture a house built by a crew that filled every gap in the drawings with its own judgment. The drawings did not say how to get from the garage to the bedrooms at night, so the crew cut a door straight from the garage into the children's bedroom. It is well made, it closes nicely, and no architect would allow it. Nobody should move in until someone has walked every room and seen what was actually built. Software built by an agent is that house.</p>
       </div>
     </section>
 
@@ -349,29 +428,164 @@
       <div class="wrap">
         <div class="section-label">Why</div>
         <h2>Walk what was built, instead of reading how it was written.</h2>
-        <p>An AI coding agent can write ten thousand lines of code to add a feature in an afternoon, and the next feature the next day. No person can read that much, and the usual code review, where someone reads the lines that changed and says whether they look right, stops being possible.</p>
-        <p>Reading the lines would not find the problems anyway. Code an agent writes is clean on its surface: it compiles, it is tidy, it looks right. The mistakes that matter are mismatches between what the code does and what the system was meant to do: a step skipped, a rule applied in the wrong place, a part that depends on something it should not, a failure nobody handles. Those are questions about the design, and code is a poor place to answer them.</p>
-        <p>Picture a house built by a crew that filled every gap in the drawings with its own judgment. The drawings did not say how to get from the garage to the bedrooms at night, so the crew cut a door straight from the garage into the children's bedroom. It is well made, it closes nicely, and no architect would allow it. Nobody should move in until someone has walked every room and seen what was actually built. Software built by an agent is that house.</p>
         <p>The way to find that door is not to read the drawings again; it is not on them. It is a home inspection: walk the rooms, open the panels, and write down what is sound and what needs attention. BigBrain System Visualizer does the same for software. Your own coding agent reads the code and draws the map; you walk it, play the scenarios that matter, ask questions, and leave comments and To Do's. The review moves from the code to the design, where people can take part in it again.</p>
-        <div class="cases">
-          <div class="case">
-            <h3>An owner who does not read code reviews what the agent built</h3>
-            <p>The owner built the booking app with Claude Code and has never read its code. On the map they see the pieces they know, and one they do not: a part that runs every night. They ask, and it is a job that emails members who have not booked in a month, which nobody asked for. Their door from the garage, found without reading a line.</p>
-          </div>
-          <div class="case">
-            <h3>A second release inspects only what changed</h3>
-            <p>The map compares the new release with the one inspected last time. New parts are green, changed ones amber, and everything that did not change fades away. The team takes the changes they know best, and the report says, change by change, who looked at it.</p>
-          </div>
-          <div class="case">
-            <h3>A specialist inspects one scenario</h3>
-            <p>A payments expert outside the team, with no access to the code, is sent one file: the scenario and the part of the map it walks through, with no source code in it. The scenario plays for them step by step, they leave comments, To Do's and a question, and send the file back. Nothing enters the map until the owner accepts it.</p>
-          </div>
-        </div>
-        <p>AI can write more code than people can read. BigBrain System Visualizer does not ask people to read it. It gives them a map to walk, scenarios to follow, tests to check, an expert to ask, and a place to say what is good and what must change. The agent explains and proposes; people decide, and approve every fix in their own tools. That is what a review was always for.</p>
+        <p>BigBrain System Visualizer, BigBrain Visualizer for short, shows a system as a 3D map: its parts, the connections between them, and the scenarios that run through them, laid out so that someone who does not read code can follow what the system does. A developer or a specialist walks the same map with the detail they need: files, functions and the cited lines a click away. One map, with the plain words on top and the technical ones underneath, so the owner, the developer and the specialist can talk about the same thing.</p>
       </div>
     </section>
 
     <section>
+      <div class="wrap">
+        <div class="section-label">Why people choose it</div>
+        <h2>Top reasons to use BigBrain Visualizer</h2>
+        <p class="section-intro">What a map of your system gives you that a diff, a diagram or a chat does not.</p>
+        <div class="reasons">
+          <div class="reason">
+            <h3>Review it without reading it</h3>
+            <p>Walk the parts, play the scenarios step by step with each one read aloud, and see what is sent, what comes back and what can go wrong. You can say whether the system does what you asked without opening a file.</p>
+          </div>
+          <div class="reason">
+            <h3>Built by the agent you already have</h3>
+            <p>BigBrain has no AI of its own and needs no key. It runs Claude Code or GitHub Copilot, the agent you are already signed in to, with tools that let it read the code and hand back what it found.</p>
+          </div>
+          <div class="reason">
+            <h3>Find what nobody asked for</h3>
+            <p>The Features tab lists everything the system does, what starts it and what it reaches. You mark what you asked for. What is left is the door from the garage.</p>
+          </div>
+          <div class="reason">
+            <h3>Ask, and get the code's answer</h3>
+            <p>A question goes to your agent together with what you are looking at. The answer comes back in plain words with the files and lines it rests on, and stays on the part it is about.</p>
+          </div>
+          <div class="reason">
+            <h3>Inspect together, and close with a report</h3>
+            <p>An inspection records who looked at what, so the map shows what nobody has reached yet. Comments and To Do's, with Must do, Should do and Nice to have, end in a report.</p>
+          </div>
+          <div class="reason">
+            <h3>Send one scenario to a specialist</h3>
+            <p>A specialist outside the team gets one file: the scenario and the part of the map it walks through, with no source code in it. They open it for free, walk it, and send their notes back.</p>
+          </div>
+          <div class="reason">
+            <h3>Stays current from your commits</h3>
+            <p>When new commits land, BigBrain says so. Bring the Map Up to Date reads only what changed and shows it: added, removed and changed, and what to test again.</p>
+          </div>
+          <div class="reason">
+            <h3>Never touches your project</h3>
+            <p>The map, the answers and the notes live in a library folder of their own on your Mac. Fixes go to your own coding agent as prompts, and you approve every change there, as you always do.</p>
+          </div>
+          <div class="reason">
+            <h3>Try every feature in the demo first</h3>
+            <p>Three demos come with the app, with every feature working inside them, the paid ones included. They need no account and no agent. Buy a seat only when you want a system of your own.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <div class="section-label">How it works</div>
+        <h2>From a folder to a map you can walk, in five steps.</h2>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <h3>Pick a folder</h3>
+            <p>Choose one checkout. Your agent finds what it works with outside that folder and suggests the others on your Mac, with its reason. You decide which to include.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <h3>The agent draws the map</h3>
+            <p>It reads the code, lays out the parts and connections, walks through each scenario it finds, and catalogs every feature. The map builds in stages, so you can start walking early.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <h3>Walk and play</h3>
+            <p>Go inside a part and back out. Play a scenario step by step, read aloud, with what is sent, what comes back and what can go wrong. Summary in plain words; Detailed adds the files and code.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">4</div>
+            <h3>Ask and note</h3>
+            <p>Ask the agent about the step on screen and get an answer with its citations. Leave comments, To Do's and questions on the parts and steps they belong to.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">5</div>
+            <h3>Inspect, report, fix</h3>
+            <p>Run an inspection with your team or a specialist, close it with a report, and send the To Do's to your agent to fix. You approve each change in your own project.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-label">What this looks like</div>
+        <h2>Three reviews, none of them by reading code.</h2>
+        <div class="stories">
+          <div class="story">
+            <p class="story-label">The owner</p>
+            <h3>An owner who does not read code reviews what the agent built</h3>
+            <p>The owner built the booking app with Claude Code and has never read its code. Members book and pay through it, and it has worked for months. On the map they see the pieces they know, the app, the backend, the payments, the data, and one they do not: a part that runs every night. They ask the agent what it is. It is a job that emails members who have not booked in a month, added while the agent built sign-up reminders, and nobody asked for it. Their door from the garage, found without reading a line. They leave a Must do To Do to remove it, then play the booking scenario, hear each step, and ask what happens if the payment fails halfway.</p>
+          </div>
+          <div class="story">
+            <p class="story-label">The next release</p>
+            <h3>A second release inspects only what changed</h3>
+            <p>Each inspection keeps a snapshot of the map it inspected. When the next release is ready, the team starts a new inspection and chooses to inspect what changed since the last one. New parts are green, parts whose job or connections changed are amber, and everything that did not change fades away. Each person takes the changes they know best, the sidebar lists the changes nobody has reached, and the report says, change by change, who looked at it.</p>
+          </div>
+          <div class="story">
+            <p class="story-label">The specialist</p>
+            <h3>A specialist inspects one scenario</h3>
+            <p>A payments expert outside the team, with no access to the code, is sent one file: the scenario and the part of the map it walks through, with no source code in it. They open it in the free viewer, and the scenario plays for them step by step, read aloud. They leave comments and a To Do, write a question for the owner's agent, and send the file back. Nothing enters the owner's map until the owner accepts it; then the specialist's report is part of the map.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <div class="section-label">What makes it different</div>
+        <h2>The code is still there when you want it. It is the last step, not the first.</h2>
+        <ul>
+          <li><strong>Compared with a diff.</strong> A diff shows lines. The map shows the system, the scenarios a change touches, what else is affected, and what to test again.</li>
+          <li><strong>Compared with an architecture diagram.</strong> A diagram is drawn once and goes stale. The map is built from the code, updated from the commits, and every part cites the files it stands for. It can be walked, questioned and annotated.</li>
+          <li><strong>Compared with chatting with an AI about code.</strong> A chat has no shared picture, and the answer scrolls away. Here the question carries what you are looking at, the answer is kept on the part it is about with its citations, and people in an inspection see the same map and each other's notes.</li>
+        </ul>
+        <p>In each case the people stay in charge of the design. The agent explains and proposes; people decide what is good, what must change and how urgently, and approve every fix in their own tools. AI can write more code than people can read. BigBrain does not ask people to read it. That is what a review was always for.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-label">Privacy</div>
+        <h2>Your code never leaves your Mac.</h2>
+        <p class="section-intro">Nothing about your system is sent to us. The one server the app talks to knows who has a seat, and nothing else.</p>
+        <div class="promise-grid">
+          <div class="promise">
+            <h3>Code stays in your checkouts</h3>
+            <p>Your agent reads the code on your Mac, under your own account with its provider. Everything BigBrain learns is kept in a library folder on your Mac, never in the project and never with us.</p>
+          </div>
+          <div class="promise">
+            <h3>The service holds an email and a seat</h3>
+            <p>Our license service holds the email your sign-in provider verified, a device hash for each Mac, your seat and license state, and a log of sign-ins and activations. No map, note, question, code or folder path can reach it.</p>
+          </div>
+          <div class="promise">
+            <h3>No password, no key</h3>
+            <p>You sign in with Apple, Google or Microsoft and we never see a password. BigBrain has no AI of its own and asks for no API key; it runs the agent you are already signed in to.</p>
+          </div>
+          <div class="promise">
+            <h3>Signed and notarized</h3>
+            <p>Each build is signed with an Apple Developer ID and notarized by Apple, and the app updates itself from then on. The Security Policy says how to check a build by hand.</p>
+          </div>
+          <div class="promise">
+            <h3>Everything cites the code</h3>
+            <p>Each fact, step and answer points at the files and lines it came from, and BigBrain checks that every citation resolves before it keeps it. Text the code does not back is not kept.</p>
+          </div>
+          <div class="promise">
+            <h3>A sent file carries no source</h3>
+            <p>The file a specialist receives holds the scenario and the part of the map it walks through, and no source code. The demos, the viewers and sent files need no account at all.</p>
+          </div>
+        </div>
+        <p class="note" style="margin-top:20px;">The details are in the <a href="privacy.html#visualizer">Privacy Policy</a> and the <a href="security.html">Security Policy</a>.</p>
+      </div>
+    </section>
+
+    <section class="alt">
       <div class="wrap">
         <div class="section-label">Free and paid</div>
         <h2>The free side is what someone made for you to look at. A system of your own is the product.</h2>
@@ -395,13 +609,7 @@
             </ul>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="alt">
-      <div class="wrap">
-        <div class="section-label">Plans</div>
-        <h2>One seat for one person. A team plan by the seat.</h2>
+        <h3 style="margin-top:28px;">One seat for one person. A team plan by the seat.</h3>
         <p>During the beta a seat comes with the beta code at no charge. Pricing for one person and for teams will be announced when the beta ends, and a seat will be bought inside the app.</p>
         <p>A personal seat is one person on one Mac at a time, with every feature. A team plan is by the seat: the owner assigns seats to people, on one invoice, and can move a seat to another person.</p>
       </div>
