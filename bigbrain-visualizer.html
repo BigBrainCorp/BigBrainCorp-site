@@ -213,6 +213,14 @@
     /* Loading and error states of the download listing */
     .status { font-size: 14px; color: #667; margin: 0 0 16px; }
     .status.err { color: #b00020; }
+    /* The beta code box. Its display rule lives here, not inline, so that the
+       hidden attribute wins: an inline display beats the browser's rule for
+       hidden, and the box showed beside the other states. */
+    .beta-code { margin: 0 0 16px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .beta-code label { font-weight: 600; }
+    .beta-code input { padding: 8px 10px; min-width: 220px; border-radius: 8px; border: 1px solid #4ab3f4; background: transparent; color: inherit; }
+    .beta-code .note { flex-basis: 100%; margin: 0; }
+    [hidden] { display: none !important; }
 
     /* Viewers and links */
     .rows { border: 1px solid #d0d9e8; border-radius: 12px; overflow: hidden; margin-top: 8px; }
@@ -363,12 +371,12 @@
         <p>Pick the build for your Mac. Apple silicon is any Mac with an M series chip; Intel is any Mac from before. Unzip the file and drag the app to Applications. Each build is signed and notarized, and the app updates itself from then on.</p>
         <p id="downloads-loading" class="status">Checking the downloads&hellip;</p>
         <p id="downloads-error" class="status err" hidden>The downloads are not available right now. Try again in a few minutes, or write to <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a>.</p>
-        <form id="beta-code" hidden style="margin:0 0 16px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-          <label for="beta-code-input" style="font-weight:600;">Beta code</label>
-          <input id="beta-code-input" type="text" autocomplete="off" spellcheck="false" style="padding:8px 10px; min-width:220px; border-radius:8px; border:1px solid #4ab3f4; background:transparent; color:inherit;" />
+        <form id="beta-code" class="beta-code" hidden>
+          <label for="beta-code-input">Beta code</label>
+          <input id="beta-code-input" type="text" autocomplete="off" spellcheck="false" />
           <button type="submit" class="button">Show the downloads</button>
-          <p id="beta-code-note" class="note" style="flex-basis:100%; margin:0;"></p>
-          <p class="note" style="flex-basis:100%; margin:0;">Need a code? Write to <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a> and say which Mac you will use it on.</p>
+          <p id="beta-code-note" class="note"></p>
+          <p class="note">Need a code? Write to <a href="mailto:Info@BigBrainCorp.com">Info@BigBrainCorp.com</a> and say which Mac you will use it on.</p>
         </form>
         <div id="downloads-content" hidden>
         <div class="downloads" id="downloads">
