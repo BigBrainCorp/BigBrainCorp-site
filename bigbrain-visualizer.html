@@ -176,25 +176,6 @@
     .side li { margin-bottom: 8px; }
     .side li:last-child { margin-bottom: 0; }
 
-    /* Prices */
-    .plans {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 8px;
-    }
-    @media (min-width: 700px) { .plans { grid-template-columns: 1fr 1fr; } }
-    .plan {
-      border: 1px solid #d0d9e8;
-      border-radius: 12px;
-      background: #f4f6f9;
-      padding: 22px 24px;
-    }
-    .plan h3 { font-size: 16px; margin: 0 0 6px; }
-    .plan .price { font-size: 26px; font-weight: 800; color: #0b1a3d; margin: 0 0 4px; line-height: 1.2; }
-    .plan .price small { font-size: 14px; font-weight: 600; color: #556; }
-    .plan p { font-size: 14px; color: #556; line-height: 1.55; margin: 0; }
-
     /* Downloads */
     .downloads {
       display: grid;
@@ -365,20 +346,10 @@
 
     <section>
       <div class="wrap">
-        <div class="section-label">Price</div>
-        <h2>One price for one person. A team plan by the seat.</h2>
-        <div class="plans">
-          <div class="plan">
-            <h3>One person</h3>
-            <p class="price">29 USD <small>a month</small></p>
-            <p>Or 290 USD a year. One seat, one Mac at a time, every feature.</p>
-          </div>
-          <div class="plan">
-            <h3>Team</h3>
-            <p class="price">29 USD <small>a seat a month</small></p>
-            <p>Seats assigned to people by the owner, on one invoice. A seat can be moved to another person.</p>
-          </div>
-        </div>
+        <div class="section-label">Plans</div>
+        <h2>One seat for one person. A team plan by the seat.</h2>
+        <p>During the beta a seat comes with the beta code at no charge. Pricing for one person and for teams will be announced when the beta ends, and a seat will be bought inside the app.</p>
+        <p>A personal seat is one person on one Mac at a time, with every feature. A team plan is by the seat: the owner assigns seats to people, on one invoice, and can move a seat to another person.</p>
       </div>
     </section>
 
