@@ -28,6 +28,7 @@ These names are final. The Mac app's sign-in screen and the product page footer 
 | Terms of Use | https://bigbraincorp.com/terms.html |
 | Privacy Policy | https://bigbraincorp.com/privacy.html |
 | Security Policy | https://bigbraincorp.com/security.html |
+| Why BigBrain System Visualizer (unlisted article) | https://bigbraincorp.com/why-bigbrain.html |
 
 The names copy the other product's site, where the same three documents are `terms.html`,
 `privacy.html` and `security.html` and the footer of every page links to all of them. One
@@ -112,3 +113,7 @@ What differs, because the Visualizer sells seats and signs people in:
   step and grid patterns are copied from the other product's home page styles; none of its
   sentences are. Two elements of that model have no source for this product and were left
   out: a "we needed this ourselves" passage and a "questions behind the tool" blog list.
+- `why-bigbrain.html` is the full article behind the product page's Read more link, built
+  from the app repository's `docs/00-why-bigbrain.md` with the demo's names and the cloud
+  and payment vendors left out. It is unlisted like the product page (noindex, not in
+  index.html, products.html or sitemap.xml) and linked only from the product page.
