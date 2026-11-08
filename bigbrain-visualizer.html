@@ -93,6 +93,8 @@
       margin: 0 auto;
       line-height: 1.65;
     }
+    .hero-sub + .hero-sub { margin-top: 12px; }
+    .hero-lead { color: #fff; font-weight: 600; font-size: 18px; }
     .beta-pill {
       display: inline-block;
       vertical-align: middle;
@@ -382,10 +384,13 @@
         <div class="hero-eyebrow">Products</div>
         <div style="display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:16px; flex-wrap:wrap;">
           <img src="BigBrainVisualizer.png" alt="BigBrain Visualizer icon" style="height:72px; width:72px; border-radius:16px; object-fit:contain; box-shadow:0 0 0 2px #4ab3f4, 0 0 16px rgba(74,179,244,.35);" />
-          <h1 style="margin:0;">Your AI agent wrote more code than you can read.<br />Are you sure you know everything your system does?</h1>
+          <h1 style="margin:0;">Your agent wrote more code than you can read.<br />Walk what it built.</h1>
         </div>
         <div style="margin-bottom:16px;"><span class="beta-pill">Closed beta</span></div>
-        <p class="hero-sub">If you do not read code, the honest answer today is no. BigBrain System Visualizer is a Mac app that shows your system as a map you can walk, built and kept current by the agent that wrote the code, so you can see exactly what was built, ask about any part of it, and bring in people you trust to look too.</p>
+        <p class="hero-sub hero-lead">AI changed how we write software. Now we need to change how we review it.</p>
+        <p class="hero-sub">When AI agents can generate more code than a human can realistically read, understanding a system line by line no longer scales.</p>
+        <p class="hero-sub">BigBrain System Visualizer takes a different approach. Instead of asking you to read everything your agent wrote, it lets you walk what your agent built.</p>
+        <p class="hero-sub">Because understanding the system matters more than reading every line.</p>
         <p class="hero-beta">The app is in a closed beta: a seat comes with a beta code, and the app and the service may change while the beta runs.</p>
         <div class="hero-actions">
           <a href="#download">Download for Mac</a>
@@ -396,7 +401,7 @@
     <section>
       <div class="wrap">
         <div class="section-label">The problem</div>
-        <h2>Why the honest answer is no, even when the system works.</h2>
+        <h2>Why reading every line no longer works, even when the system does.</h2>
         <p>You described what you wanted, and the agent built it, filling every gap in your description with its own judgment. It works: people use it, it may even take payments. But you have no idea how the code does what it does, and you cannot find out by reading it. An agent can write ten thousand lines in an afternoon and the next feature the next day. No person can read that much, and the usual code review, where someone reads the lines that changed and says whether they look right, stops being possible. Testing does not close the gap either: you can only test what you know to look for.</p>
         <p>Reading the lines would not find the problems anyway. Code an agent writes is clean on its surface: it compiles, it is tidy, it looks right. The mistakes that matter are mismatches between what the code does and what the system was meant to do: a step skipped, a rule applied in the wrong place, a part that depends on something it should not, a failure nobody handles. Those are questions about the design, and code is a poor place to answer them.</p>
         <p>Picture a house built by a crew that filled every gap in the drawings with its own judgment. The drawings did not say how to get from the garage to the bedrooms at night, so the crew cut a door straight from the garage into the children's bedroom. It is well made, it closes nicely, and no architect would allow it. Nobody should move in until someone has walked every room and seen what was actually built. Software built by an agent is that house.</p>
