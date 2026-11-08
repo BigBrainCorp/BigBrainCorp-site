@@ -501,7 +501,7 @@
     <section>
       <div class="wrap">
         <div class="section-label">What this looks like</div>
-        <h2>Three reviews, none of them by reading code.</h2>
+        <h2>Four reviews, none of them by reading code.</h2>
         <div class="stories">
           <div class="story">
             <p class="story-label">The owner</p>
@@ -509,15 +509,21 @@
             <p>The owner built the booking app with Claude Code and has never read its code. Members book and pay through it, and it has worked for months. On the map they see the pieces they know, the app, the backend, the payments, the data, and one they do not: a part that runs every night. They ask the agent what it is. It is a job that emails members who have not booked in a month, added while the agent built sign-up reminders, and nobody asked for it. Their door from the garage, found without reading a line. They leave a Must do To Do to remove it, then play the booking scenario, hear each step, and ask what happens if the payment fails halfway.</p>
           </div>
           <div class="story">
-            <p class="story-label">The next release</p>
-            <h3>A second release inspects only what changed</h3>
-            <p>Each inspection keeps a snapshot of the map it inspected. When the next release is ready, the team starts a new inspection and chooses to inspect what changed since the last one. New parts are green, parts whose job or connections changed are amber, and everything that did not change fades away. Each person takes the changes they know best, the sidebar lists the changes nobody has reached, and the report says, change by change, who looked at it.</p>
+            <p class="story-label">The team</p>
+            <h3>A team inspects a release while the project manager watches it come together</h3>
+            <p>Before the release goes out, the team lead starts an inspection and shares the library through a private git repository. The engineers join from their own Macs and each takes the parts they know best: one walks payments, one the data, one the jobs that run at night. They play the scenarios, ask the agent questions, leave comments and To Do's marked Must do, Should do or Nice to have, and mark each part inspected when it is done. The project manager, who reads no code, follows the same map. The Coverage view colors it by who has looked at what and shows the parts nobody has reached yet, and the Readiness card says which stages are done and what is still waiting. When the last part is marked, closing the inspection writes the report: who took part, what was covered and what was not, how the code moved during the inspection, and the To Do's grouped by priority.</p>
           </div>
           <div class="story">
             <p class="story-label">The outside expert</p>
             <h3>An expert reviews the system without ever seeing the code</h3>
             <p>Before launch, the owner wants a security reviewer they trust to look at how payments and personal data move through the system. The reviewer is not on the team and must not be given the code or the repository. The owner selects the scenarios that matter and sends one file: the map and those scenarios, with no source code in it. The reviewer opens it in the free viewer, plays each scenario step by step, goes inside the parts it passes through, and leaves findings, comments and To Do's, with a question for the owner's agent where the map is not enough. They send the file back. Nothing enters the owner's map until the owner accepts it; then the review is part of the map, and the code never left the owner's Mac. An architect or an auditor is brought in the same way.</p>
           </div>
+          <div class="story">
+            <p class="story-label">The next release</p>
+            <h3>A second release inspects only what changed</h3>
+            <p>The next release is the smaller job, because BigBrain tracks what changed and lets the inspection focus on it. Each inspection keeps a snapshot of the map it inspected. When the next release is ready, the team starts a new inspection and chooses to inspect what changed since the last one. New parts are green, parts whose job or connections changed are amber, and everything that did not change fades away. Each person takes the changes they know best, the sidebar lists the changes nobody has reached, and the report says, change by change, who looked at it.</p>
+          </div>
+        </div>
         </div>
       </div>
     </section>
