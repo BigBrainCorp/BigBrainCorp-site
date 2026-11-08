@@ -238,6 +238,10 @@
     }
     .flow-step h3 { font-size: 15px; font-weight: 700; color: #0b1a3d; margin: 0 0 8px; }
     .flow-step p { font-size: 13px; color: #556; line-height: 1.55; margin: 0; }
+    .flow-parts { list-style: lower-alpha; margin: 10px 0 0; padding-left: 18px; font-size: 13px; color: #556; line-height: 1.5; }
+    .flow-step .flow-parts li { font-size: 13px; color: #556; line-height: 1.5; margin: 0 0 6px; }
+    .flow-parts li::marker { color: #4ab3f4; font-weight: 700; }
+    .flow-parts strong { color: #0b1a3d; }
 
     /* Stories: a case each, with a label */
     .stories { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 8px; }
@@ -502,7 +506,12 @@
           <div class="flow-step">
             <div class="flow-num">2</div>
             <h3>The agent draws the map</h3>
-            <p>It reads the code, lays out the parts and connections, walks through each scenario it finds, and catalogs every feature. With Cloud on, it reads the cloud resources the system runs on and sets them above the parts that use them. Find the Tests records the test suites and cases, so each step shows which tests check it. The map builds in stages, so you can start walking early.</p>
+            <p>It builds the map in three layers, in stages, so you can start walking early.</p>
+            <ol class="flow-parts">
+              <li><strong>The code.</strong> Parts, connections, every scenario it finds, and every feature.</li>
+              <li><strong>The cloud.</strong> The resources the system runs on, laid over the parts that use them.</li>
+              <li><strong>The tests.</strong> The suites and cases, attached to the steps they check.</li>
+            </ol>
           </div>
           <div class="flow-step">
             <div class="flow-num">3</div>
