@@ -3850,6 +3850,7 @@ void main() {
       <p><button class="primary" data-act="open">Open a File…</button></p>
       <p class="hint">You can also drop a .bigbrain file anywhere on this window.</p>
       <p class="hint">Nothing here runs a coding agent or reads code: the viewer plays what the Mac produced, and your comments, To Do's and questions go back to the owner in the same file.</p>
+      <p class="hint">&copy; 2026 BigBrainCorp LLC</p>
     </section>`}keyDialog=null;showKey(){if(!this.keyDialog){const t=document.createElement("dialog");t.className="keydialog",t.addEventListener("click",e=>{(e.target===t||e.target.closest('[data-act="closekey"]'))&&t.close()}),document.body.appendChild(t),this.keyDialog=t}this.keyDialog.innerHTML=`<div class="head-row"><h2>What the map shows</h2><span class="spacer"></span><button class="icon" data-act="closekey" title="Close">✕</button></div>${this.legend()}
       <p class="hint">The same key is the last fold of this panel.</p>`,this.keyDialog.showModal()}legend(){const t=(r,o)=>`<div class="key">${r}<div>${o}</div></div>`,e=r=>`<span class="sw flag" style="background:${r}"></span>`,n=(r,o=!1)=>`<span class="sw dot${o?" glow":""}" style="background:${r}"></span>`,s=(r,o=!1)=>`<span class="sw line${o?" dashed":""}" style="border-color:${r}"></span>`;return`<div class="legend">
       ${t(e("#4a8cff"),"<b>Blue flag</b>: a comment, something worth knowing about the part. The number is how many.")}
